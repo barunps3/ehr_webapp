@@ -1,8 +1,9 @@
 import React from "react"
+import SearchCard from "../components/searchCard"
 
 export default function test() {
   return (
-    <h1>Test</h1>
+    <SearchCard />
   )
 }
 

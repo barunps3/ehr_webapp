@@ -1,16 +1,12 @@
+import HeaderContent from "./components/HeaderContent"
 import LoginCard from "./components/LoginCard"
 
-export default function Home() {
+export default function Login() {
   return (
-    <main className="body">
+    <>
       <header className="header">
         <div className="company-header dark-blue">
-          <div>
-            <img className="company-icon" src="/ehr.png" alt="ehr icon" />
-          </div>
-          <div>
-            <h3 className="company-name">Baum Electronic Health Records</h3>
-          </div>
+          <HeaderContent />
         </div>
         <div className="company-header light-blue"></div>
       </header>
@@ -23,6 +19,6 @@ export default function Home() {
         <div className="light-blue"></div>
         <div className="dark-blue"></div>
       </footer>
-    </main>
+    </>
   )
 }
