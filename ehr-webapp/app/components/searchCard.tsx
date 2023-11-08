@@ -7,7 +7,7 @@ export default function SearchCard() {
     <div className={styles.flexContainer}>
       <form id="search-id" className={styles.searchInput}>
         <select className={styles.select} name="id-selector" required>
-          <option value="" disabled>ID Type</option>
+          <option value="" disabled selected>ID Type</option>
           <option value="aadhar-card">Aadhar Card</option>
           <option value="passport">Passport</option>
           <option value="hospital-patient-id">Patient ID</option>
