@@ -3,7 +3,6 @@ import styles from './SearchCard.module.css'
 
 export default function SearchCard() {
   return (
-    <>
     <div className={styles.flexContainer}>
       <form id="search-id" className={styles.searchInput}>
         <select className={styles.select} defaultValue="" name="id-selector" required>
@@ -22,6 +21,5 @@ export default function SearchCard() {
 
       <div id={styles.resultsContainer}></div>
     </div>
-    </>
   )
 }
