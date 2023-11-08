@@ -3,8 +3,6 @@ import React from "react"
 import styles from './LoginCard.module.css'
 import { useRouter } from 'next/navigation'
 
-
-
 export default function LoginCard() {
   const router = useRouter()
   const handleClick = (e: React.FormEvent) => {

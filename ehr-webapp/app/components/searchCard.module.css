@@ -1,0 +1,109 @@
+
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.btn {
+  margin-top: 10px;
+  margin-right: 5px;
+  background-color: var(--header-color-2);
+  width: 80px;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.dropdown {
+  position: relative;
+  width: 8rem;
+}
+
+.searchInput {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  width: var(--search-bar-width);
+  justify-content: center;
+}
+
+.searchInput > input {
+  width: 40vw;
+  border-width: var(--search-border-width);
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+  margin: 0px;
+  padding-left: 0.5rem;
+}
+
+.select {
+  background-color: #F5EFE7;
+  padding: 5px;
+  border-width: var(--search-border-width);
+  border-radius: 10px 0px 0px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#addPatient {
+  width: 140px;
+}
+
+.result-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+  cursor: pointer; /* Add a pointer cursor for better UX */
+}
+
+#resultsContainer {
+  margin-top: 20px;
+  width: 80vw;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+#resultsContainer > table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+.header-row,
+.td {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: left;
+}
+
+.header-row > * {
+  background-color: var(--content-color-1);
+}
+
+.header-row:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}

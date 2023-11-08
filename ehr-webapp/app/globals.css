@@ -10,6 +10,8 @@
   --header-color-2: #4F709C;
   --content-color-1: #D8C4B6;
   --content-color-2: #F5EFE7;
+  --search-bar-width: 40rem;
+  --search-border-width: 1px;
 }
 
 .body {
