@@ -1,8 +1,19 @@
-import React from "react"
+'use client'
+import React, { useState } from "react"
 import SearchCard from "../components/searchCard"
+import SearchResultCard from "../components/searchResultCard"
 import HeaderContent from "../components/HeaderContent"
 
+type searchResult = 
+    {
+        name: {
+            firstName: string
+        },
+        idValue: string
+    }
+
 export default function SearchPage() {
+  const [searchResult, setSearchResult] = useState<Array<searchResult>>([])
   return (
     <>
       <header className="header">
@@ -13,7 +24,8 @@ export default function SearchPage() {
       </header>
 
       <div className="content">
-        <SearchCard />
+        <SearchCard setSearchResult={setSearchResult} />
+        <SearchResultCard searchResult={searchResult} />
       </div>
 
       <footer className="footer">
