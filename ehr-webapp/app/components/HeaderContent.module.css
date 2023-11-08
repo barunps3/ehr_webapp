@@ -1,0 +1,11 @@
+
+.companyIcon {
+  border-radius: 5%;
+  width: 40px;
+} 
+
+.companyName {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Times, serif;
+  font-size: 1.5rem;
+  color: white
+}
