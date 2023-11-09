@@ -19,11 +19,7 @@ function ResultRow({ patient }: {patient: searchResult}) {
 }
 
 export default function SearchResultCard({ searchResult }: { searchResult: searchResult[] }) {
-  const patients = searchResult.map((patient) => {
-    return (
-      <ResultRow patient={patient} />
-    )
-  })
+  const patients = searchResult.map((patient) => <ResultRow patient={patient} />)
 
   if (searchResult.length > 0) {
     return (

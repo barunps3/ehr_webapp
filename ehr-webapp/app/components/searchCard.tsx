@@ -54,7 +54,6 @@ export default function SearchCard({ setSearchResult }:
         <button className={styles.btn} id={styles.addPatient} type="button">+ Add new patient</button>
       </div>
 
-      <div id={styles.resultsContainer}></div>
     </div>
   )
 }
