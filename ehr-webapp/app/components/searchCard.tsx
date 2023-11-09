@@ -3,10 +3,16 @@ import React from "react"
 import styles from './SearchCard.module.css'
 // import { searchPatients } from '../actions/searchPage'
 
+export type searchResult = {
+  name: {
+    firstName: string
+  },
+  idValue: string
+}[]
 
 function searchPatients(
         formData: FormData, 
-        setSearchResult: React.Dispatch<React.SetStateAction<[searchResult]>>
+        setSearchResult: React.Dispatch<React.SetStateAction<searchResult>>
     ) {
     const patientId = formData.get("patientId")
     const idType = formData.get("idType")
@@ -25,15 +31,8 @@ function searchPatients(
     setSearchResult([barunDetails])
 }
 
-type searchResult = 
-    {
-        name: {
-            firstName: string
-        },
-        idValue: string
-    }
 type setSearchResult = {
-  setSearchResult: React.Dispatch<React.SetStateAction<[searchResult]>>
+  setSearchResult: React.Dispatch<React.SetStateAction<searchResult>>
 }
 
 export default function SearchCard({ setSearchResult }: setSearchResult) {
