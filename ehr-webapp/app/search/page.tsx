@@ -8,7 +8,7 @@ import './searchPage.css'
 
 
 export default function SearchPage() {
-  const [searchResult, setSearchResult] = useState<searchResult>([])
+  const [searchResult, setSearchResult] = useState<searchResult[]>([])
 
   type Status = "idle" | "loading" | "success" | "error";
 

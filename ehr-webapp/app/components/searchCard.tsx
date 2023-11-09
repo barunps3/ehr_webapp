@@ -11,11 +11,11 @@ export type searchResult = {
   dateOfBirth: string,
   idType: string,
   idValue: string 
-}[]
+}
 
 function searchPatients(
   formData: FormData,
-  setSearchResult: React.Dispatch<React.SetStateAction<searchResult>>
+  setSearchResult: React.Dispatch<React.SetStateAction<searchResult[]>>
 ) {
   const patientId = formData.get("patientId")
   const idType = formData.get("idType")
@@ -36,7 +36,7 @@ function searchPatients(
 
 
 export default function SearchCard({ setSearchResult }:
-  { setSearchResult:React.Dispatch<React.SetStateAction<searchResult>> }) {
+  { setSearchResult:React.Dispatch<React.SetStateAction<searchResult[]>> }) {
   return (
     <div className={styles.flexContainer}>
       <form id="search-id" className={styles.searchInput} action={(formData) => searchPatients(formData, setSearchResult)}>

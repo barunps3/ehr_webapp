@@ -1,17 +1,27 @@
 import React from "react";
 import { searchResult } from "./SearchCard";
 import styles from './SearchCard.module.css'
+import { useRouter } from "next/navigation";
 
-export default function SearchResultCard({ searchResult }: { searchResult: searchResult }) {
+const external_url = "https://www.google.com"
+
+function ResultRow({ patient }: {patient: searchResult}) {
+  const router = useRouter();
+  return (
+    <tr key={patient.idValue} onClick={() => router.push('https://www.google.com')}>
+      <td>{patient.name.firstName} {patient.name.lastName}</td>
+      <td>{patient.gender}</td>
+      <td>{patient.dateOfBirth}</td>
+      <td>{patient.idType}</td>
+      <td>{patient.idValue}</td>
+    </tr>
+  )
+}
+
+export default function SearchResultCard({ searchResult }: { searchResult: searchResult[] }) {
   const patients = searchResult.map((patient) => {
     return (
-      <tr key={patient.idValue}>
-        <td>{patient.name.firstName} {patient.name.lastName}</td>
-        <td>{patient.gender}</td>
-        <td>{patient.dateOfBirth}</td>
-        <td>{patient.idType}</td>
-        <td>{patient.idValue}</td>
-      </tr>
+      <ResultRow patient={patient} />
     )
   })
 
@@ -29,6 +39,4 @@ export default function SearchResultCard({ searchResult }: { searchResult: searc
       </div>
     )
   }
-
-  return <></>
 }
