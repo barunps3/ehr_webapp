@@ -24,23 +24,23 @@ const headers = new Headers({
   "Access-Control-Allow-Origin": "*"
 }); 
 
-const searchForm = new FormData(document.getElementById("search-id") as HTMLFormElement)
-console.log(searchForm)
-async function searchPatientById(searchForm:FormData) {
-  try {
-    const response = await fetch("https://www.google.com", {
-      method: "POST",
-      body: searchForm,
-      headers: headers 
-    })
-    const foundPatients = await response.json()
-    console.log("Success:", foundPatients)
-  } catch(error) {
-    console.error(error)
-  }
-}
+// const searchForm = new FormData(document.getElementById("search-id") as HTMLFormElement)
+// console.log(searchForm)
+// async function searchPatientById(searchForm:FormData) {
+//   try {
+//     const response = await fetch("https://www.google.com", {
+//       method: "POST",
+//       body: searchForm,
+//       headers: headers 
+//     })
+//     const foundPatients = await response.json()
+//     console.log("Success:", foundPatients)
+//   } catch(error) {
+//     console.error(error)
+//   }
+// }
 
-searchPatientById(searchForm)
+// searchPatientById(searchForm)
 
 type patientSummary = {
   name : {
@@ -93,6 +93,7 @@ function matchId(idText: string) {
 const resultsContainer = document.getElementById("results-container") as HTMLDivElement
 const searchButton = document.getElementById("search") as HTMLButtonElement
 searchButton.addEventListener("click", (e) => {
+  e.preventDefault()
   const resultTable = resultsContainer.querySelector("#results-container > table")
   console.log(resultTable)
   if (resultTable != null) {

@@ -1,9 +1,10 @@
 'use client'
 import React, { useState } from "react"
-import SearchCard from "../components/searchCard"
-import SearchResultCard from "../components/searchResultCard"
+import SearchResultCard from "../components/SearchResultCard"
+import SearchCard from "../components/SearchCard"
 import HeaderContent from "../components/HeaderContent"
-import { searchResult } from "../components/searchCard"
+import { searchResult } from "../components/SearchCard"
+import './searchPage.css'
 
 
 export default function SearchPage() {

@@ -1,41 +1,42 @@
 'use client'
 import React from "react"
 import styles from './SearchCard.module.css'
-// import { searchPatients } from '../actions/searchPage'
 
 export type searchResult = {
-  name: {
-    firstName: string
+  name : {
+    firstName: string,
+    lastName: string,
   },
-  idValue: string
+  gender: string,
+  dateOfBirth: string,
+  idType: string,
+  idValue: string 
 }[]
 
 function searchPatients(
-        formData: FormData, 
-        setSearchResult: React.Dispatch<React.SetStateAction<searchResult>>
-    ) {
-    const patientId = formData.get("patientId")
-    const idType = formData.get("idType")
-
-    const barunDetails = {
-        "name" : {
-          "firstName": "Barun",
-          "lastName": "Mazumdar",
-        },
-        "gender": "Male",
-        "dateOfBirth": "14/10/1992",
-        "idType": "Aadhar Card",
-        "idValue": "FFUP38U"
-    }
-
-    setSearchResult([barunDetails])
-}
-
-type setSearchResult = {
+  formData: FormData,
   setSearchResult: React.Dispatch<React.SetStateAction<searchResult>>
+) {
+  const patientId = formData.get("patientId")
+  const idType = formData.get("idType")
+
+  const barunDetails = {
+    "name": {
+      "firstName": "Barun",
+      "lastName": "Mazumdar",
+    },
+    "gender": "Male",
+    "dateOfBirth": "14/10/1992",
+    "idType": "Aadhar Card",
+    "idValue": "FFUP38U"
+  }
+
+  setSearchResult([barunDetails])
 }
 
-export default function SearchCard({ setSearchResult }: setSearchResult) {
+
+export default function SearchCard({ setSearchResult }:
+  { setSearchResult:React.Dispatch<React.SetStateAction<searchResult>> }) {
   return (
     <div className={styles.flexContainer}>
       <form id="search-id" className={styles.searchInput} action={(formData) => searchPatients(formData, setSearchResult)}>
