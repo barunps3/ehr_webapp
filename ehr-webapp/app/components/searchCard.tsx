@@ -34,19 +34,27 @@ function searchPatients(
   setSearchResult([barunDetails])
 }
 
+export function IDSelector({ className }:{className?: string}) {
+  return (
+    <>
+      <select className={className} defaultValue="" name="idType" required>
+        <option value="" disabled>ID Type</option>
+        <option value="aadhar-card">Aadhar Card</option>
+        <option value="passport">Passport</option>
+        <option value="hospital-patient-id">Patient ID</option>
+      </select>
+      <input type="search" id="patient_id" name="patientId" placeholder="-- Please select ID type --" required />
+    </>
+  )
+}
+
 
 export default function SearchCard({ setSearchResult }:
   { setSearchResult:React.Dispatch<React.SetStateAction<searchResult[]>> }) {
   return (
     <div className={styles.flexContainer}>
       <form id="search-id" className={styles.searchInput} action={(formData) => searchPatients(formData, setSearchResult)}>
-        <select className={styles.select} defaultValue="" name="idType" required>
-          <option value="" disabled>ID Type</option>
-          <option value="aadhar-card">Aadhar Card</option>
-          <option value="passport">Passport</option>
-          <option value="hospital-patient-id">Patient ID</option>
-        </select>
-        <input type="search" id="patient_id" name="patientId" placeholder="-- Please select ID type --" required />
+        <IDSelector className={styles.select} />
       </form>
 
       <div>

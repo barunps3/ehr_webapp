@@ -1,0 +1,126 @@
+
+.formContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.formContainer > fieldset {
+  min-width: 500px;
+  width: 65%;
+  margin-top: 20px;
+  
+}
+
+.basicInfofieldSet{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  /* border: 2px solid blue; */
+  align-items: stretch;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.addressContainer {
+  grid-column: 1 / 3;
+}
+
+/* activate to view grid boxes/
+.fieldSet > div {
+  border: 2px solid brown;
+} */
+
+.basicInfofieldSet input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 30px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+.addressContainer > textarea {
+  height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+
+.hospitalInfofieldset {
+  width: 65%;
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  /* border: 2px solid blue; */
+  justify-items: stretch;
+  align-items: stretch;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.hospitalInfofieldset input {
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+}
+.hospitalInfofieldset input[type="checkbox"] {
+  height: 12px;
+  width: 15px;
+}
+
+.hospitalInfofieldset select {
+  border-radius: 5px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.idSelectorContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+.genderSelector > select {
+  width: 50%;
+  text-align: left;
+}
+
+
+#departmentSelector {
+  grid-column: 1 / 3;
+}
+#departmentSelector > select {
+  text-align: left;
+  width: 100%;
+}
+
+.additionalRemarks textarea {
+  width: 100%;
+  height: 100px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  background-color: var(--header-color-2);
+  width: 200px;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

@@ -1,9 +1,7 @@
 import React from "react";
 import HeaderContent from "../components/HeaderContent";
+import PatientEntryForm from "../components/EnterPatient";
 
-function PatientEntryForm() {
-  
-}
 
 export default function AddPatientPage() {
   return (
@@ -16,6 +14,7 @@ export default function AddPatientPage() {
       </header>
 
       <div className="content">
+        <PatientEntryForm />
       </div>
 
       <footer className="footer">
