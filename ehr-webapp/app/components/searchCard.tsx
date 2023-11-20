@@ -3,35 +3,45 @@ import React from "react"
 import styles from './SearchCard.module.css'
 
 export type searchResult = {
-  name : {
-    firstName: string,
-    lastName: string,
-  },
-  gender: string,
-  dateOfBirth: string,
-  idType: string,
-  idValue: string 
+  FirstName: string,
+  LastName: string,
+  Gender: string,
+  DateOfBirth: string,
+  InsuranceId: string,
+  PhoneNum: string,
+  EmergencyPhoneNum: string,
+  Address: string,
+  IdType: string,
+  IdValue: string
 }
 
-function searchPatients(
+async function getPatientByIdType(url: string, idType: string, idValue: string): Promise<any> {
+  const fullURL = `${url}?idType=${idType}&idVal=${idValue}`
+  const response = await fetch(fullURL,{method: "GET"}).then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return response
+  })
+  let data = await response.json()
+  return data
+}
+
+async function searchPatients(
   formData: FormData,
   setSearchResult: React.Dispatch<React.SetStateAction<searchResult[]>>
 ) {
-  const patientId = formData.get("patientId")
-  const idType = formData.get("idType")
+  const patientId = formData.get("patientId")?.toString()
+  const idType = formData.get("idType")?.toString()
+  if (patientId != null && idType != null) {
+    let patient = await getPatientByIdType(
+      "http://localhost:8080/patient", idType, patientId) as searchResult
 
-  const barunDetails = {
-    "name": {
-      "firstName": "Barun",
-      "lastName": "Mazumdar",
-    },
-    "gender": "Male",
-    "dateOfBirth": "14/10/1992",
-    "idType": "Aadhar Card",
-    "idValue": "FFUP38U"
+    patient["IdType"]= idType,
+    patient["IdValue"] = patientId
+    console.log("return patient data: ", patient)
+    setSearchResult([patient])
   }
-
-  setSearchResult([barunDetails])
 }
 
 export function IDSelector({ className }:{className?: string}) {
@@ -39,7 +49,7 @@ export function IDSelector({ className }:{className?: string}) {
     <>
       <select className={className} defaultValue="" name="idType" required>
         <option value="" disabled>ID Type</option>
-        <option value="aadhar-card">Aadhar Card</option>
+        <option value="aadharcard">Aadhar Card</option>
         <option value="passport">Passport</option>
         <option value="hospital-patient-id">Patient ID</option>
       </select>

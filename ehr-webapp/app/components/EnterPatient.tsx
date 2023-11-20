@@ -29,6 +29,18 @@ export default function PatientEntryForm() {
           <label>Emergency Contact Number</label><br />
           <input name="emergencyPhoneNumber" type="text" />
         </div>
+        <div className={styles.genderSelector}>
+          <label>Select Gender</label><br />
+          <select name="sex" id="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Date of Birth</label><br />
+          <input name="dateOfBirth" type="date" />
+        </div>
         <div className={styles.addressContainer}>
           <label>Address</label><br />
           <textarea name="address" id="address" placeholder="Address"></textarea>
@@ -46,22 +58,11 @@ export default function PatientEntryForm() {
           <div className={styles.idSelectorContainer}>
             <select className="" defaultValue="" name="idType" required>
               <option value="" disabled>ID Type</option>
-              <option value="aadhar-card">Aadhar Card</option>
+              <option value="aadharcard">Aadhar Card</option>
               <option value="passport">Passport</option>
             </select><input type="search" id="patient_id" name="patientId" placeholder="ID value" required />
+          </div>
         </div>
-
-        </div>
-
-        <div className={styles.genderSelector}>
-          <label>Select Gender</label><br />
-          <select name="sex" id="sex">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Intersex</option>
-          </select>
-        </div>
-
         <div>
           <label>Insurance Number</label><br />
           <input name="insuranceNumber" type="insuranceNumber" />

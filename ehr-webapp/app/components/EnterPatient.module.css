@@ -14,6 +14,25 @@
   
 }
 
+.formContainer input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 30px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+.formContainer select {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 30px;
+  border-radius: 5px;
+  border-width: 1px;
+  cursor: pointer;
+}
+
 .basicInfofieldSet{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,15 +51,6 @@
 .fieldSet > div {
   border: 2px solid brown;
 } */
-
-.basicInfofieldSet input {
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 5px;
-  height: 30px;
-  border-radius: 5px;
-  border-width: 1px;
-}
 
 .addressContainer > textarea {
   height: 100px;
@@ -64,29 +74,20 @@
   row-gap: 10px;
 }
 
-.hospitalInfofieldset input {
-  width: 100%;
-  height: 30px;
-  box-sizing: border-box;
-}
 .hospitalInfofieldset input[type="checkbox"] {
   height: 12px;
   width: 15px;
 }
 
-.hospitalInfofieldset select {
-  border-radius: 5px;
-  height: 30px;
-  text-align: center;
-  cursor: pointer;
-}
 
 .idSelectorContainer {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
+.idSelectorContainer > select {
+  width: auto;
+}
 
 .genderSelector > select {
   width: 50%;

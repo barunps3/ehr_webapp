@@ -7,13 +7,14 @@ const external_url = "https://www.google.com"
 
 function ResultRow({ patient }: {patient: searchResult}) {
   const router = useRouter();
+  console.log("value in result row:", patient)
   return (
-    <tr key={patient.idValue} onClick={() => router.push('https://www.google.com')}>
-      <td>{patient.name.firstName} {patient.name.lastName}</td>
-      <td>{patient.gender}</td>
-      <td>{patient.dateOfBirth}</td>
-      <td>{patient.idType}</td>
-      <td>{patient.idValue}</td>
+    <tr key={patient.IdValue} onClick={() => router.push('https://www.google.com')}>
+      <td>{patient.FirstName} {patient.LastName}</td>
+      <td>{patient.Gender}</td>
+      <td>{patient.DateOfBirth}</td>
+      <td>{patient.IdType}</td>
+      <td>{patient.IdValue}</td>
     </tr>
   )
 }
