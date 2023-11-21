@@ -1,6 +1,6 @@
 import React from "react";
 import { searchResult } from "./SearchCard";
-import styles from './SearchCard.module.css'
+import styles from './styles/SearchCard.module.css'
 import { useRouter } from "next/navigation";
 
 const external_url = "https://www.google.com"

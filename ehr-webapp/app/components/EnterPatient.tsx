@@ -2,7 +2,7 @@
 import React from "react";
 import { IDSelector } from "./SearchCard";
 import { useForm } from "react-hook-form"
-import styles from "./EnterPatient.module.css"
+import styles from "./styles/EnterPatient.module.css"
 
 export default function PatientEntryForm() {
   const {register,

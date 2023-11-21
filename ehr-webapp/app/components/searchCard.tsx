@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import styles from './SearchCard.module.css'
+import styles from './styles/SearchCard.module.css'
 
 export type searchResult = {
   FirstName: string,

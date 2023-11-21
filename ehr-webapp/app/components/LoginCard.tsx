@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import styles from './LoginCard.module.css'
+import styles from './styles/LoginCard.module.css'
 import { useRouter } from 'next/navigation'
 
 export default function LoginCard() {
