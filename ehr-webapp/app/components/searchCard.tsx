@@ -1,4 +1,3 @@
-'use client'
 import React from "react"
 import styles from './styles/SearchCard.module.css'
 
@@ -18,11 +17,11 @@ export type searchResult = {
 async function getPatientByIdType(url: string, idType: string, idValue: string): Promise<any> {
   const fullURL = `${url}?idType=${idType}&idVal=${idValue}`
   const response = await fetch(fullURL,{method: "GET"}).then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-    return response
-  })
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+  return response
+})
   let data = await response.json()
   return data
 }

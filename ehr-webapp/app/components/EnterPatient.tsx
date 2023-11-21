@@ -1,14 +1,11 @@
 'use client'
 import React from "react";
-import { IDSelector } from "./SearchCard";
 import { useForm } from "react-hook-form"
 import styles from "./styles/EnterPatient.module.css"
 
 export default function PatientEntryForm() {
-  const {register,
-  handleSubmit,
-  formState: {errors}} = useForm()
-
+  const {register, handleSubmit, formState: {errors}} = useForm()
+  
   return (
     <form className={styles.formContainer}>
       <fieldset className={styles.basicInfofieldSet}>
