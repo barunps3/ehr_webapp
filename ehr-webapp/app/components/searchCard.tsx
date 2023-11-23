@@ -12,6 +12,7 @@ export type searchResult = {
   Address: string,
   IdType: string,
   IdValue: string
+  Id: string
 }
 
 async function getPatientByIdType(url: string, idType: string, idValue: string): Promise<any> {
