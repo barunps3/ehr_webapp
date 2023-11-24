@@ -10,19 +10,20 @@ type entryFormInput = {
 }
 
 let changedInput: { [key: string]: boolean } = {
-  firstName: false,
-  lastName: false,
-  phoneNumber: false,
-  emergencyPhoneNumber: false,
-  gender: false,
-  dateOfBirth: false,
-  address: false,
-  idType: false,
-  patientId: false,
-  insuranceNumber: false,
-  departmentSelector: false,
-  checkbox: false,
-  comments: false   
+  FirstName: false,
+  LastName: false,
+  PhoneNumber: false,
+  EmergencyPhoneNumber: false,
+  Gender: false,
+  DateOfBirth: false,
+  Address: false,
+  IdType: false,
+  IdValue: false,
+  Id: false,
+  InsuranceNumber: false,
+  DepartmentSelector: false,
+  Checkbox: false,
+  Comments: false   
 }
 
 
@@ -33,6 +34,15 @@ function changeToEditStyle(changedInputKey: string) {
   return {border: '1px solid gray'}
 }
 
+function matchesPreviousData(inputName: string, 
+                              inputVal: string, 
+                              data: searchResult | undefined) {
+  if (data) {
+    if (data[inputName] === inputVal) return true
+  }
+  return false
+}
+
 
 export default function PatientEntryForm({ isEditMode = false, data }: entryFormInput) {
   const [changedField, setChangedField] = useState(new Set<string>())
@@ -41,16 +51,22 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
   console.log("changed field:", changedField)
   console.log("current style", changeToEditStyle("firstName"))
   
-  function textChange(e) {
+  function textChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     if (e.target.value === "") {
-      console.log("in if block")
-    } else {
+      return
+    } 
+    else if (matchesPreviousData(e.target.name, e.target.value, data)) {
       var currentChangedFields = new Set(changedField)
-      console.log("in else block")
-      currentChangedFields.add(e.target.name)
-      firstNameStyle = {border: '1px solid red'}
+      currentChangedFields.delete(e.target.name)
+      changedInput[e.target.name] = false
+      console.log("entered else if:", currentChangedFields)
       setChangedField(currentChangedFields)
-      console.log("in else block end ")
+    } 
+    else {
+      var currentChangedFields = new Set(changedField)
+      currentChangedFields.add(e.target.name)
+      console.log("else:", currentChangedFields)
+      setChangedField(currentChangedFields)
     }
   }
 
@@ -60,32 +76,34 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         <legend>Basic Information</legend>
         <div>
           <label>First Name</label><br />
-          <input name="firstName" 
-            style={changeToEditStyle("firstName")} 
+          <input name="FirstName" 
+            style={changeToEditStyle("FirstName")} 
             type="text" onChange={textChange} 
             defaultValue={isEditMode ? data?.FirstName : ""}/>
         </div>
         <div>
           <label>Last Name</label><br />
-          <input name="lastName" type="text" 
-            style={changeToEditStyle("lastName")} 
+          <input name="LastName" type="text" 
+            style={changeToEditStyle("LastName")} 
             onChange={textChange} defaultValue={isEditMode ? data?.LastName : ""}/>
         </div>
         <div>
           <label>Phone Number</label><br />
-          <input name="phoneNumber" type="text" 
-            style={changeToEditStyle("phoneNumber")} 
+          <input name="PhoneNum" type="text" 
+            style={changeToEditStyle("PhoneNum")} 
             onChange={textChange} defaultValue={isEditMode ? data?.PhoneNum : ""}/>
         </div>
         <div>
           <label>Emergency Contact Number</label><br />
-          <input name="emergencyPhoneNumber" type="text" 
-            style={changeToEditStyle("emergencyPhoneNumber")} 
+          <input name="EmergencyPhoneNum" type="text" 
+            style={changeToEditStyle("EmergencyPhoneNum")} 
             onChange={textChange} defaultValue={isEditMode ? data?.EmergencyPhoneNum : ""}/>
         </div>
         <div className={styles.genderSelector}>
           <label>Select Gender</label><br />
-          <select name="gender" id="gender" style={changeToEditStyle("gender")} onChange={textChange} defaultValue={isEditMode ? data?.Gender: ""}>
+          <select name="Gender" id="Gender" 
+            style={changeToEditStyle("Gender")} 
+            onChange={textChange} defaultValue={isEditMode ? data?.Gender: ""}>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
@@ -93,11 +111,15 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         </div>
         <div>
           <label>Date of Birth</label><br />
-          <input name="dateOfBirth" type="date" style={changeToEditStyle("dateOfBirth")} onChange={textChange} defaultValue={isEditMode ? data?.DateOfBirth : ""}/>
+          <input name="DateOfBirth" 
+            type="date" style={changeToEditStyle("DateOfBirth")} 
+            onChange={textChange} defaultValue={isEditMode ? data?.DateOfBirth : ""}/>
         </div>
         <div className={styles.addressContainer}>
           <label>Address</label><br />
-          <textarea name="address" id="address" placeholder="Address" style={changeToEditStyle("address")} onChange={textChange} defaultValue={isEditMode ? data?.Address : ""}></textarea>
+          <textarea name="Address" id="address" placeholder="Address" 
+            style={changeToEditStyle("Address")} onChange={textChange} 
+            defaultValue={isEditMode ? data?.Address : ""}></textarea>
         </div>
       </fieldset>
 
@@ -105,27 +127,33 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         <legend>Hospital Information</legend>
         <div>
           <label>Patient ID</label><br />
-          <input name="autoPatientId" type="autoPatientId" disabled onChange={textChange} defaultValue={isEditMode ? data?.Id : "a3245-2345"} />
+          <input name="Id" type="autoPatientId" disabled 
+            onChange={textChange} defaultValue={isEditMode ? data?.Id : "a3245-2345"} />
         </div>
         <div>
           <label>National ID</label><br />
           <div className={styles.idSelectorContainer}>
-            <select className="" style={changeToEditStyle("idType")} onChange={textChange} defaultValue={isEditMode ? data?.IdType : ""} name="idType" required>
+            <select className="" style={changeToEditStyle("IdType")} 
+              onChange={textChange} defaultValue={isEditMode ? data?.IdType : ""} name="idType" required>
               <option value="" disabled>ID Type</option>
               <option value="aadharcard">Aadhar Card</option>
               <option value="passport">Passport</option>
             </select>
-            <input type="search" id="patient_id" name="patientId" style={changeToEditStyle("patientId")} onChange={textChange} defaultValue={isEditMode ? data?.IdValue : ""} placeholder="ID value" required />
+            <input type="search" id="patient_id" name="IdValue" 
+              style={changeToEditStyle("IdValue")} onChange={textChange} 
+              defaultValue={isEditMode ? data?.IdValue : ""} placeholder="ID value" required />
           </div>
         </div>
         <div>
           <label>Insurance Number</label><br />
-          <input name="insuranceNumber" type="text" style={changeToEditStyle("insuranceNumber")} onChange={textChange} defaultValue={isEditMode ? data?.InsuranceId : ""}/>
+          <input name="InsuranceId" type="text" style={changeToEditStyle("InsuranceId")} 
+          onChange={textChange} defaultValue={isEditMode ? data?.InsuranceId : ""}/>
         </div>
 
         <div id={styles.departmentSelector}>
           <label>Select Current Department</label><br />
-          <select name="departmentSelector" style={changeToEditStyle("departmentSelector")} onChange={textChange} id="departmentSelected">
+          <select name="departmentSelector" style={changeToEditStyle("departmentSelector")} 
+          onChange={textChange} id="departmentSelected">
             <option value="ortho">Orthopaedic</option>
             <option value="ortho">General Physician</option>
             <option value="female">Cancer</option>
@@ -135,7 +163,8 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         </div>
 
         <div>
-          <input type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("inPatient")} onChange={textChange} id="inPatient" name="inPatient" />
+          <input type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("inPatient")} 
+            onChange={textChange} id="inPatient" name="inPatient" />
           <label htmlFor="inPatient">In Patient</label>
         </div>
       </fieldset>

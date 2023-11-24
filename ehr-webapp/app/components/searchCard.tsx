@@ -1,16 +1,17 @@
 import React from "react"
 import styles from './styles/SearchCard.module.css'
 
-export type searchResult = {
-  FirstName: string,
-  LastName: string,
-  Gender: string,
-  DateOfBirth: string,
-  InsuranceId: string,
-  PhoneNum: string,
-  EmergencyPhoneNum: string,
-  Address: string,
-  IdType: string,
+export type searchResult  = {
+  [key: string]: string
+  FirstName: string
+  LastName: string
+  Gender: string
+  DateOfBirth: string
+  InsuranceId: string
+  PhoneNum: string
+  EmergencyPhoneNum: string
+  Address: string
+  IdType: string
   IdValue: string
   Id: string
 }
