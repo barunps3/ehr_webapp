@@ -1,22 +1,14 @@
 import React from "react"
 import styles from './styles/SearchCard.module.css'
+import { PatientFormData } from "../utils/dataTypes"
+import { NATIONALID } from '../utils/constants'
 
-export type searchResult  = {
-  [key: string]: string
-  FirstName: string
-  LastName: string
-  Gender: string
-  DateOfBirth: string
-  InsuranceId: string
-  PhoneNum: string
-  EmergencyPhoneNum: string
-  Address: string
-  IdType: string
-  IdValue: string
-  Id: string
-}
 
-async function getPatientByIdType(url: string, idType: string, idValue: string): Promise<any> {
+async function getPatientByIdType(
+    url: string, 
+    idType: NATIONALID , 
+    idValue: string
+  ): Promise<any> {
   const fullURL = `${url}?idType=${idType}&idVal=${idValue}`
   const response = await fetch(fullURL,{method: "GET"}).then((response) => {
   if (!response.ok) {
@@ -29,17 +21,18 @@ async function getPatientByIdType(url: string, idType: string, idValue: string):
 }
 
 async function searchPatients(
-  formData: FormData,
-  setSearchResult: React.Dispatch<React.SetStateAction<searchResult[]>>
-) {
-  const patientId = formData.get("patientId")?.toString()
-  const idType = formData.get("idType")?.toString()
-  if (patientId != null && idType != null) {
-    let patient = await getPatientByIdType(
-      "http://localhost:8080/patient", idType, patientId) as searchResult
+    formData: FormData,
+    setSearchResult: React.Dispatch<React.SetStateAction<PatientFormData[]>>
+  ) {
+  const nidType = formData.get("idType")?.toString() as NATIONALID | undefined
+  const nidValue = formData.get("patientId")?.toString() as PatientFormData["NationalIDType"] | undefined
 
-    patient["IdType"]= idType,
-    patient["IdValue"] = patientId
+  if (nidValue != undefined && nidType != undefined) {
+    let patient = await getPatientByIdType(
+      "http://localhost:8080/patient", nidType, nidValue) as PatientFormData
+
+    patient["NationalIDType"] = nidType,
+    patient["NationalIDValue"] = nidValue,
     console.log("return patient data: ", patient)
     setSearchResult([patient])
   }
@@ -54,22 +47,22 @@ export function IDSelector({ className }:{className?: string}) {
         <option value="passport">Passport</option>
         <option value="hospital-patient-id">Patient ID</option>
       </select>
-      <input type="search" id="patient_id" name="patientId" placeholder="-- Please select ID type --" required />
+      <input type="search" name="patientId" placeholder="-- Please select ID type --" required />
     </>
   )
 }
 
 
 export default function SearchCard({ setSearchResult }:
-  { setSearchResult:React.Dispatch<React.SetStateAction<searchResult[]>> }) {
+  { setSearchResult:React.Dispatch<React.SetStateAction<PatientFormData[]>> }) {
   return (
     <div className={styles.flexContainer}>
+
       <form id="search-id" className={styles.searchInput} action={(formData) => searchPatients(formData, setSearchResult)}>
         <IDSelector className={styles.select} />
       </form>
-
       <div>
-        <button className={styles.btn} form="search-id" id="search" type="submit">Search</button>
+        <button className={styles.btn} form="search-id" type="submit">Search</button>
         <button className={styles.btn} id={styles.addPatient} type="button">+ Add new patient</button>
       </div>
 
