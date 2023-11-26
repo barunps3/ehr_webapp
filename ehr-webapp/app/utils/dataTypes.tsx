@@ -1,4 +1,4 @@
-import { GENDER, NATIONALID, HOSPITALDEPT } from './constants'
+import { GENDER, NATIONALID, HOSPITALDEPT, CARETYPE } from './constants'
 
 export type PatientFormData = {
   FirstName: string
@@ -12,7 +12,7 @@ export type PatientFormData = {
   NationalIDType: NATIONALID
   NationalIDValue: string
   PatientUUID: string
-  InPatient: boolean
+  InPatient: CARETYPE
   CurrentDept: HOSPITALDEPT
   Comments: string
 }

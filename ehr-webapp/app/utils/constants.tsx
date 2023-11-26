@@ -17,3 +17,8 @@ export enum HOSPITALDEPT {
   Radiology = "Radiology",
   Gynecologist = "Gynecologist"
 }
+
+export enum CARETYPE {
+  InPatient = "INPATIENT",
+  OutPatient = "OUTPATIENT"
+}

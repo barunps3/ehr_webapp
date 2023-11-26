@@ -1,36 +1,38 @@
 import React, { useState } from "react"
 import HeaderContent from "@/app/components/HeaderContent"
 import PatientEntryForm from "@/app/components/EnterPatient"
+import { NATIONALID } from "@/app/utils/constants"
 
 async function getPatientInfo(idType: string, idValue: string) {
 
-  console.log(idType, idValue)
   const response = await fetch(`http://localhost:8080/patient?idType=${idType}&idVal=${idValue}`, 
     {
       method: "GET", 
-      headers: {"Accept": "application/json"}
+      headers: {"Accept": "application/json"},
+      cache: 'no-cache'
     }).then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
     return response.json()
   })
+  console.log(response)
   return response
 } 
 
 type searchParams = {
-  idType: string,
+  idType: NATIONALID,
   idValue: string
 }
 
 export default async function EditPatientPage({ searchParams }: {
-  searchParams : {idType: string, idValue: string}
+  searchParams : searchParams
 }) {
-  // const data = await getPatientInfo("1c340c57-f8e9-4471-b3dc-4cfc1533a90c")
   const data = await getPatientInfo(searchParams.idType, searchParams.idValue)
-  data["IdType"] = searchParams.idType
-  data["IdValue"] = searchParams.idValue
-  console.log(data)
+  data["NationalIDType"] = searchParams.idType
+  data["NationalIDValue"] = searchParams.idValue
+  data["PatientUUID"] = data["UUID"]
+  data["InPatient"] = data["CurrentCare"]
 
   return (
     <>

@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { useForm } from "react-hook-form"
 import styles from "./styles/EnterPatient.module.css"
 import { PatientFormData } from "../utils/dataTypes";
-import { GENDER, HOSPITALDEPT, NATIONALID } from "../utils/constants";
+import { CARETYPE, GENDER, HOSPITALDEPT, NATIONALID } from "../utils/constants";
 import {v4 as uuidv4} from 'uuid';
 
 
@@ -19,7 +19,7 @@ let emptyFormData: PatientFormData = {
   NationalIDType: NATIONALID.AadharCard,
   NationalIDValue: "",
   PatientUUID: uuidv4(),
-  InPatient: false,
+  InPatient: CARETYPE.OutPatient,
   CurrentDept: HOSPITALDEPT.GenPhysician,
   Comments: ""
 }
@@ -47,11 +47,10 @@ type entryFormInput = {
 }
 
 export default function PatientEntryForm({ isEditMode = false, data }: entryFormInput) {
-  
-  const [editedInputs, setEditedInput] = useState(markedInput)
-
   let defaultData: PatientFormData = emptyFormData
   if (data) defaultData = data
+  
+  const [editedInputs, setEditedInput] = useState(markedInput)
    
   function textChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const targetName = e.target.name as keyof PatientFormData
@@ -67,6 +66,7 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
       }
     }
   }
+  console.log("current care: ", defaultData.InPatient == "INPATIENT" ? true : false)
 
   function changeToEditStyle(editedInputName: keyof PatientFormData) {
     if (markedInput[editedInputName]) return {border: '1px solid red'} 
@@ -165,7 +165,8 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
 
         <div>
           <input type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("InPatient")} 
-            onChange={textChange} id="inPatient" name="InPatient" />
+            onChange={textChange} id="inPatient" name="InPatient"
+            checked={defaultData.InPatient == "INPATIENT" ? true : false}/>
           <label htmlFor="inPatient">In Patient</label>
         </div>
       </fieldset>
