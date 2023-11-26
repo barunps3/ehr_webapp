@@ -3,12 +3,12 @@ import React, { useState } from "react"
 import SearchResultCard from "../components/SearchResultCard"
 import SearchCard from "../components/SearchCard"
 import HeaderContent from "../components/HeaderContent"
-import { searchResult } from "../components/SearchCard"
 import './searchPage.css'
+import { PatientFormData } from "../utils/dataTypes"
 
 
 export default function SearchPage() {
-  const [searchResult, setSearchResult] = useState<searchResult[]>([])
+  const [searchResult, setSearchResult] = useState<PatientFormData[]>([])
 
   type Status = "idle" | "loading" | "success" | "error";
 

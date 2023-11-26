@@ -43,8 +43,8 @@ export function IDSelector({ className }:{className?: string}) {
     <>
       <select className={className} defaultValue="" name="idType" required>
         <option value="" disabled>ID Type</option>
-        <option value="aadharcard">Aadhar Card</option>
-        <option value="passport">Passport</option>
+        <option value={NATIONALID.AadharCard}>Aadhar Card</option>
+        <option value={NATIONALID.Passport}>Passport</option>
         <option value="hospital-patient-id">Patient ID</option>
       </select>
       <input type="search" name="patientId" placeholder="-- Please select ID type --" required />

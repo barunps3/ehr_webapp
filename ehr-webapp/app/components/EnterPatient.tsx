@@ -51,6 +51,13 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
   if (data) defaultData = data
   
   const [editedInputs, setEditedInput] = useState(markedInput)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    getValues,
+  } = useForm({defaultValues: data})
+  console.log(defaultData)
    
   function textChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const targetName = e.target.name as keyof PatientFormData
@@ -66,7 +73,6 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
       }
     }
   }
-  console.log("current care: ", defaultData.InPatient == "INPATIENT" ? true : false)
 
   function changeToEditStyle(editedInputName: keyof PatientFormData) {
     if (markedInput[editedInputName]) return {border: '1px solid red'} 
@@ -78,32 +84,36 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         <legend>Basic Information</legend>
         <div>
           <label>First Name</label><br />
-          <input name="FirstName" 
+          <input {...register("FirstName")}
             style={changeToEditStyle("FirstName")} 
             type="text" onChange={textChange} 
             defaultValue={defaultData.FirstName}/>
         </div>
         <div>
           <label>Last Name</label><br />
-          <input name="LastName" type="text" 
+          <input {...register("LastName")}
+            type="text" 
             style={changeToEditStyle("LastName")} 
             onChange={textChange} defaultValue={defaultData.LastName}/>
         </div>
         <div>
           <label>Phone Number</label><br />
-          <input name="PhoneNum" type="text" 
+          <input {...register("PhoneNum")}
+            type="text" 
             style={changeToEditStyle("PhoneNum")} 
             onChange={textChange} defaultValue={defaultData.PhoneNum}/>
         </div>
         <div>
           <label>Emergency Contact Number</label><br />
-          <input name="EmergencyPhoneNum" type="text" 
+          <input {...register("EmergencyPhoneNum")}
+            type="text" 
             style={changeToEditStyle("EmergencyPhoneNum")} 
             onChange={textChange} defaultValue={defaultData.EmergencyPhoneNum}/>
         </div>
         <div className={styles.genderSelector}>
           <label>Select Gender</label><br />
-          <select name="Gender" id="Gender" 
+          <select {...register("Gender")}
+            id="Gender" 
             style={changeToEditStyle("Gender")} 
             onChange={textChange} defaultValue={defaultData.Gender}>
             <option value={GENDER.Male}>Male</option>
@@ -113,48 +123,58 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         </div>
         <div>
           <label>Date of Birth</label><br />
-          <input name="DateOfBirth" 
+          <input {...register("DateOfBirth")}
             type="date" style={changeToEditStyle("DateOfBirth")} 
             onChange={textChange} defaultValue={defaultData.DateOfBirth}/>
         </div>
         <div className={styles.addressContainer}>
           <label>Address</label><br />
-          <textarea name="Address" id="address" placeholder="Address" 
+          <textarea {...register("Address")}
+            id="address" placeholder="Address" 
             style={changeToEditStyle("Address")} onChange={textChange} 
             defaultValue={defaultData.Address}></textarea>
         </div>
       </fieldset>
 
       <fieldset className={styles.hospitalInfofieldset}>
-        <legend>Hospital Information</legend>
+        <legend>Medical Information</legend>
         <div>
           <label>Patient ID</label><br />
-          <input name="PatientUUID" type="text" disabled defaultValue={defaultData.PatientUUID} />
+          <input {...register("PatientUUID")}
+            type="text" disabled defaultValue={defaultData.PatientUUID} />
         </div>
         <div>
           <label>National ID</label><br />
           <div className={styles.idSelectorContainer}>
-            <select style={changeToEditStyle("NationalIDType")} 
-              onChange={textChange} defaultValue={defaultData.NationalIDType} name="NationalIDType" required>
+            <select 
+              {...register("NationalIDType")}
+              style={changeToEditStyle("NationalIDType")} 
+              onChange={textChange}
+              // defaultValue={defaultData.NationalIDType}
+              required>
               <option value="" disabled>ID Type</option>
               <option value={NATIONALID.AadharCard}>Aadhar Card</option>
               <option value={NATIONALID.Passport}>Passport</option>
             </select>
-            <input type="search" name="NationalIDValue" 
+            <input {...register("NationalIDValue")}
+              type="search"
               style={changeToEditStyle("NationalIDValue")} onChange={textChange} 
               defaultValue={defaultData.NationalIDValue} placeholder="NationalIDValue" required />
           </div>
         </div>
         <div>
           <label>Insurance Number</label><br />
-          <input name="InsuranceId" type="text" style={changeToEditStyle("InsuranceId")} 
-          onChange={textChange} defaultValue={defaultData.InsuranceId}/>
+          <input {...register("InsuranceId")}
+            type="text" style={changeToEditStyle("InsuranceId")} 
+            onChange={textChange} defaultValue={defaultData.InsuranceId}/>
         </div>
 
         <div id={styles.departmentSelector}>
           <label>Select Current Department</label><br />
-          <select name="CurrentDept" style={changeToEditStyle("CurrentDept")} 
-          onChange={textChange} id="departmentSelected" defaultValue={defaultData.CurrentDept}>
+          <select 
+            {...register("CurrentDept")}
+            style={changeToEditStyle("CurrentDept")} 
+            onChange={textChange} id="departmentSelected" defaultValue={defaultData.CurrentDept}>
             <option value={HOSPITALDEPT.Orthopaedic}>Orthopaedic</option>
             <option value={HOSPITALDEPT.GenPhysician}>General Physician</option>
             <option value={HOSPITALDEPT.Cancer}>Cancer</option>
@@ -164,9 +184,10 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
         </div>
 
         <div>
-          <input type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("InPatient")} 
-            onChange={textChange} id="inPatient" name="InPatient"
-            checked={defaultData.InPatient == "INPATIENT" ? true : false}/>
+          <input {...register("InPatient")}
+            type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("InPatient")} 
+            onChange={textChange} id="inPatient"
+            checked={defaultData.InPatient == CARETYPE.InPatient}/>
           <label htmlFor="inPatient">In Patient</label>
         </div>
       </fieldset>
