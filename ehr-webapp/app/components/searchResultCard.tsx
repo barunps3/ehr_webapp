@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PatientFormData } from "../utils/dataTypes";
 
-const external_url = "https://www.google.com"
 
 function ResultRow({ patient }: {patient: PatientFormData}) {
   const router = useRouter();
