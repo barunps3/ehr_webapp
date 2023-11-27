@@ -1,7 +1,8 @@
 import React from "react";
 import styles from './styles/HeaderContent.module.css'
+import { PAGENAME } from "../utils/constants";
 
-export default function HeaderContent() {
+function HeaderWithOnlyName() {
   return (
     <>
       <div>
@@ -12,4 +13,13 @@ export default function HeaderContent() {
       </div>
     </>
   )
+}
+
+export default function HeaderContent({ pageName }: {pageName: PAGENAME}) {
+  if (pageName === PAGENAME.LoginPage) {
+    return ( 
+      <HeaderWithOnlyName />
+    )
+  }
+  return <HeaderWithOnlyName />
 }

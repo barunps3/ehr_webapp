@@ -3,6 +3,7 @@ import HeaderContent from "../components/HeaderContent";
 import ExplorerSideBar from "../components/ExplorerSidebar";
 import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
+import { PAGENAME } from "../utils/constants";
 
 
 export default function AddPatientPage() {
@@ -10,7 +11,7 @@ export default function AddPatientPage() {
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent />
+          <HeaderContent pageName={PAGENAME.PatientHistory}/>
         </div>
         <div className="company-header light-blue"></div>
       </header>

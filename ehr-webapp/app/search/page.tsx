@@ -5,6 +5,7 @@ import SearchCard from "../components/SearchCard"
 import HeaderContent from "../components/HeaderContent"
 import './searchPage.css'
 import { PatientFormData } from "../utils/dataTypes"
+import { PAGENAME } from "../utils/constants"
 
 
 export default function SearchPage() {
@@ -17,7 +18,7 @@ export default function SearchPage() {
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent />
+          <HeaderContent pageName={PAGENAME.SearchPage}/>
         </div>
         <div className="company-header light-blue"></div>
       </header>

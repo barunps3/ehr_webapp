@@ -22,3 +22,9 @@ export enum CARETYPE {
   InPatient = "INPATIENT",
   OutPatient = "OUTPATIENT"
 }
+
+export enum PAGENAME {
+  LoginPage = "LoginPage",
+  SearchPage = "SearchPage",
+  PatientHistory = "PatientHistory"
+}
