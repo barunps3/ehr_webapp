@@ -1,0 +1,25 @@
+
+.fullImage {
+  background-color: bisque;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+}
+
+.fullImage > img {
+  object-fit: contain;
+}
+
+.thumbBar {
+  background-color: bisque;
+  margin-bottom: 10px;
+  position: relative;
+  width: 400px;
+  height: 75px;
+}
+
+.thumbBar > img {
+  object-fit: contain;
+}
