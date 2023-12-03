@@ -1,7 +1,7 @@
 
 .fullImage {
   background-color: var(--content-color-2);
-  width: 400px;
+  width: 500px;
   height: 400px;
   position: relative;
   display: block;
@@ -17,13 +17,20 @@
 .thumbBar {
   background-color: var(--content-color-2);
   margin-bottom: 10px;
-  position: relative;
-  width: 400px;
-  height: 75px;
+  width: 500px;
+  height: 80px;
   border: solid;
   border-color: var(--content-color-1);
+  display: flex;
+  justify-content: flex-start;
 }
 
-.thumbBar > img {
+.thumbBox {
+  position: relative;
+  width: 20%;
+}
+
+.thumbBox > img {
   object-fit: contain;
 }
+

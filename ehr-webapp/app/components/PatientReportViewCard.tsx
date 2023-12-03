@@ -3,8 +3,13 @@ import Image from "next/image"
 import styles from "./styles/PatientReportViewCard.module.css"
 import { useState } from "react"
 
-function ImageGallery({ defaultImage }: {defaultImage: string}) {
-  const [ mainImage, setMainImage ] = useState(defaultImage)
+function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
+  const [ mainImage, setMainImage ] = useState(defaultImages[0])
+
+  function handleClick(selectedImageId: number) {
+    setMainImage(defaultImages[selectedImageId])
+  }
+
   return (
     <>
       <div className={styles.fullImage}>
@@ -15,17 +20,37 @@ function ImageGallery({ defaultImage }: {defaultImage: string}) {
         />
       </div>
       <div className={styles.thumbBar}>
-        <Image src="/localImages/lumbar-spine-side.png"
-          alt="lumbar-spine-left"
-          fill={true}
-        />
+        {defaultImages.map((image, index) => {
+          return (
+            <div key={index} className={styles.thumbBox}>
+              <Image src={image}
+                onClick={() => handleClick(index)}
+                alt="lumbar-spine-left"
+                fill={true}
+              />
+            </div>
+          )
+        })}
+        
+        {/* <div className={styles.thumbBox}>
+          <Image src="/localImages/lumbar-spine-front.png"
+            onClick={handleClick}
+            alt="lumbar-spine-left"
+            fill={true}
+          />
+        </div> */}
       </div>
     </>
   )
 }
 
+const testImages = [
+  "/localImages/lumbar-spine-front.png",
+  "/localImages/lumbar-spine-side.png"
+]
+
 export default function PatientReportViewCard() {
 return (
-    <ImageGallery defaultImage="/localImages/lumbar-spine-front.png"/>
+    <ImageGallery defaultImages={testImages}/>
   )
 }
