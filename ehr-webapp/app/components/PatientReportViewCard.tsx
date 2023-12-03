@@ -1,16 +1,17 @@
+'use client'
 import Image from "next/image"
 import styles from "./styles/PatientReportViewCard.module.css"
+import { useState } from "react"
 
-function ImageGallery() {
+function ImageGallery({ defaultImage }: {defaultImage: string}) {
+  const [ mainImage, setMainImage ] = useState(defaultImage)
   return (
     <>
       <div className={styles.fullImage}>
         <Image 
-          src="/localImages/lumbar-spine-front.png"
+          src={mainImage}
           alt="lumbar-spine-front"
           fill={true}
-          // width={200}
-          // height={200}
         />
       </div>
       <div className={styles.thumbBar}>
@@ -25,6 +26,6 @@ function ImageGallery() {
 
 export default function PatientReportViewCard() {
 return (
-    <ImageGallery />
+    <ImageGallery defaultImage="/localImages/lumbar-spine-front.png"/>
   )
 }

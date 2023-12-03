@@ -72,7 +72,7 @@ export default function RecordFolder({
 
   const [isExpanded, setExpansion] = useState(false) 
   console.log(folderName, isExpanded)
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
     setExpansion(!isExpanded)
   }

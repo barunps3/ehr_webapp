@@ -1,11 +1,13 @@
 
 .fullImage {
-  background-color: bisque;
+  background-color: var(--content-color-2);
   width: 400px;
   height: 400px;
   position: relative;
   display: block;
   margin-top: 20px;
+  border: solid;
+  border-color: var(--content-color-1);
 }
 
 .fullImage > img {
@@ -13,11 +15,13 @@
 }
 
 .thumbBar {
-  background-color: bisque;
+  background-color: var(--content-color-2);
   margin-bottom: 10px;
   position: relative;
   width: 400px;
   height: 75px;
+  border: solid;
+  border-color: var(--content-color-1);
 }
 
 .thumbBar > img {
