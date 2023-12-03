@@ -1,10 +1,12 @@
 'use client'
 import Image from "next/image"
 import styles from "./styles/PatientReportViewCard.module.css"
+import ImageMaximizer from "./utils/ImageMaximizer"
 import { useState } from "react"
 
 function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
   const [ mainImage, setMainImage ] = useState(defaultImages[0])
+  const [ showImgMaximizer, setShowImgMaximizer ] = useState(false)
 
   function handleClick(selectedImageId: number) {
     setMainImage(defaultImages[selectedImageId])
@@ -12,7 +14,10 @@ function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
 
   return (
     <>
-      <div className={styles.fullImage}>
+      <div className={styles.fullImage} 
+        onMouseEnter={() => setShowImgMaximizer(true)}
+        onMouseLeave={() => setShowImgMaximizer(false)}>
+        <ImageMaximizer show={showImgMaximizer} />
         <Image 
           src={mainImage}
           alt="lumbar-spine-front"
@@ -31,14 +36,6 @@ function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
             </div>
           )
         })}
-        
-        {/* <div className={styles.thumbBox}>
-          <Image src="/localImages/lumbar-spine-front.png"
-            onClick={handleClick}
-            alt="lumbar-spine-left"
-            fill={true}
-          />
-        </div> */}
       </div>
     </>
   )
