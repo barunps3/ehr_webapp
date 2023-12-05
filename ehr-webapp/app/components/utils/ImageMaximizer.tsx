@@ -1,14 +1,18 @@
+import { MouseEventHandler } from 'react'
 import styles from '../styles/ImageMaximizer.module.css'
 
 type imageMaximizer = {
   show: boolean
+  onClick: MouseEventHandler<HTMLButtonElement>
+  isMaximized: boolean
 }
 
-export default function ImageMaximizer({ show }: imageMaximizer) {
+export default function ImageMaximizer({ show, onClick, isMaximized}: imageMaximizer) {
   return (
-    <div className={styles.imageMaximizer}
+    <button className={styles.imageMaximizer}
+      onClick={onClick}
       style={show ? {display: 'block'} : {display: 'none'}}>
-      Maximize
-    </div>
+      { isMaximized ? 'Minimize' : 'Maximize'} 
+    </button>
   )
 }
