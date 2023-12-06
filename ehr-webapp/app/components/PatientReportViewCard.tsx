@@ -2,7 +2,7 @@
 import Image from "next/image"
 import styles from "./styles/PatientReportViewCard.module.css"
 import ImageMaximizer from "./utils/ImageMaximizer"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
   const [ mainImage, setMainImage ] = useState(defaultImages[0])
@@ -11,8 +11,8 @@ function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
   const [ inFullscreenMode, setScreenMode ] = useState(false)
   console.log("infullscreen?", inFullscreenMode)
 
-  const mainImageStyle = inFullscreenMode ? styles.mainImageFullscreen : styles.mainImage
-  const thumbBarStyle = inFullscreenMode ? styles.thumbBarFullscreen : styles.thumbBar
+  const mainImageStyle = false ? styles.mainImageFullscreen : styles.mainImage
+  const thumbBarStyle = false ? styles.thumbBarFullscreen : styles.thumbBar
 
   function handleClick(selectedImageId: number) {
     setMainImage(defaultImages[selectedImageId])
@@ -20,13 +20,13 @@ function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
 
   function toggleFullScreen() {
     const imgGall = imageGallery.current
-    if (imgGall) {
-      if (!inFullscreenMode) {
-        imgGall.requestFullscreen().catch((error) => {
-          console.log("requesting full screen error:", error)
-        })
-      }
+    
+    if (imgGall && !inFullscreenMode) {
+      imgGall.requestFullscreen().catch((error) => {
+        console.log("requesting full screen error:", error)
+      })
     } else {
+      console.log('exiting fullscreen')
       document.exitFullscreen().catch((error) => {
         console.log("exiting error:", error)
       })
@@ -34,8 +34,19 @@ function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
     setScreenMode(!inFullscreenMode)
   }
 
+  const handleFullscreenChange = () => {
+    setScreenMode(!!document.fullscreenElement);
+  };
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, [inFullscreenMode]);
+
   return (
-    <div ref={imageGallery}>
+    <div className={styles.imageGallery} ref={imageGallery}>
       <div className={mainImageStyle}
         onMouseEnter={() => setShowImgMaximizer(true)}
         onMouseLeave={() => setShowImgMaximizer(false)}>
