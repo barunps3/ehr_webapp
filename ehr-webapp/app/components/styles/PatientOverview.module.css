@@ -11,9 +11,11 @@
 .patientInfoBar {
   position: sticky;
   top: var(--header-height);
-  height: 50px;
+  height: 30px;
   width: 100%;
-  background-color: var(--content-color-1);
+  color: white;
+  /* background-color: var(--content-color-1); */
+  background-color: var(--header-color-2);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
