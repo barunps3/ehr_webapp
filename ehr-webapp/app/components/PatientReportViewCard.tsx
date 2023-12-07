@@ -83,8 +83,14 @@ const testImages = [
   "/localImages/lumbar-spine-side.png"
 ]
 
-export default function PatientReportViewCard() {
-return (
-    <ImageGallery defaultImages={testImages}/>
+type PatientReportViewCard = {
+  showXray: boolean
+}
+
+export default function PatientReportViewCard({ showXray }: PatientReportViewCard) {
+  return (
+    <>
+      { showXray ? <ImageGallery defaultImages={testImages}/> : <></> }
+    </>
   )
 }

@@ -13,11 +13,15 @@ function BasicInfoBar(){
   )
 }
 
-export default function PatientOverview() {
+type PatientOverview = {
+  showXray: boolean
+}
+
+export default function PatientOverview({ showXray }: PatientOverview) {
   return (
     <div className={styles.overviewCard}>
       <BasicInfoBar />
-      <PatientReportViewCard />
+      <PatientReportViewCard showXray={showXray} />
     </div>
   )
 }

@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import HeaderContent from "../components/HeaderContent";
 import ExplorerSideBar from "../components/ExplorerSidebar";
 import PatientOverview from "../components/PatientOverview";
@@ -7,6 +8,8 @@ import { PAGENAME } from "../utils/constants";
 
 
 export default function AddPatientPage() {
+  const [ showXray, setShowXray] = useState(false)
+
   return (
     <>
       <header className="header">
@@ -17,9 +20,12 @@ export default function AddPatientPage() {
       </header>
 
       <div className="content">
-          <ExplorerSideBar />
+          <ExplorerSideBar 
+            setShowXray={setShowXray} />
           <div className="verticalLine"></div>
-          <PatientOverview />
+          <PatientOverview 
+            showXray={showXray}
+          />
       </div>
 
       <footer className="footer">

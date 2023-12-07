@@ -1,0 +1,6 @@
+.selectedFile {
+  display: inline;
+  width: auto;
+  height: auto;
+  background-color: var(--header-color-2);
+}
