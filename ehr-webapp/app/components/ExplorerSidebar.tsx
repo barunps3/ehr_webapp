@@ -1,5 +1,5 @@
 import styles from './styles/ExplorerSidebar.module.css'
-import RecordFolder from './RecordFolder'
+import RecordFolder from './utils/RecordFolder'
 
 type ExplorerSideBar = {
   setShowXray: React.Dispatch<React.SetStateAction<boolean>>
