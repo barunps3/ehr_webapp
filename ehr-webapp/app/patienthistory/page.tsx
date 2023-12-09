@@ -3,6 +3,8 @@ import HeaderContent from "../components/HeaderContent";
 import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
+import { searchParams } from "../utils/dataTypes";
+import { getPatientBasicInfo } from "../lib/fetches";
 
 function BasicInfoBar(){
   return (
@@ -16,8 +18,11 @@ function BasicInfoBar(){
   )
 }
 
-export default function AddPatientPage() {
 
+export default async function PatientHistoryPage({ searchParams }: 
+  {searchParams: searchParams}) {
+  
+  const data = await getPatientBasicInfo(searchParams.idType, searchParams.idValue) 
   return (
     <>
       <header className="header">

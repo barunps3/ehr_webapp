@@ -1,20 +1,11 @@
-import { GENDER, NATIONALID, HOSPITALDEPT, CARETYPE } from './constants'
+import { NATIONALID } from './constants'
+import { DefaultPatientFormData, EmptyPatientBasicInfo } from './defaults'
 
-export type PatientFormData = {
-  FirstName: string
-  LastName: string
-  Gender: GENDER.Male | GENDER.Female | GENDER.Other
-  DateOfBirth: string
-  InsuranceId: string
-  PhoneNum: string
-  EmergencyPhoneNum: string
-  Address: string
-  NationalIDType: NATIONALID
-  NationalIDValue: string
-  PatientUUID: string
-  InPatient: CARETYPE
-  CurrentDept: HOSPITALDEPT
-  Comments: string
+export type PatientFormData = typeof DefaultPatientFormData
+
+export type searchParams = {
+  idType: NATIONALID,
+  idValue: string
 }
 
-
+export type FetchedPatientBasicInfo = typeof EmptyPatientBasicInfo
