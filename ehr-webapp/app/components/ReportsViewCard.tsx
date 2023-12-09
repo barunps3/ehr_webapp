@@ -7,7 +7,7 @@ const testImages = [
   "/localImages/lumbar-spine-side.png"
 ]
 
-type PatientReportViewCard = {
+type ReportsViewCard = {
   showXray: boolean
 }
 
@@ -20,10 +20,10 @@ function Report() {
   )
 }
 
-export default function PatientReportViewCard({ showXray }: PatientReportViewCard) {
+export default function ReportsViewCard({ showXray }: ReportsViewCard) {
   return (
-    <>
+    <div className={styles.reportsViewCard}>
       { showXray ? <Report /> : <></> }
-    </>
+    </div>
   )
 }

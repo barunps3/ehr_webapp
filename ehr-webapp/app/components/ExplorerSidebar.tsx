@@ -7,7 +7,7 @@ type ExplorerSideBar = {
 
 export default function ExplorerSideBar({ setShowXray }: ExplorerSideBar) {
   return (
-    <div className={styles.sidebar}>
+    <div className={styles.explorerSidebar}>
       <RecordFolder displayFileHandler={setShowXray}/>
     </div>
   )

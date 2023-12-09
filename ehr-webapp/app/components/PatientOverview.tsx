@@ -1,27 +1,19 @@
-import PatientReportViewCard from "./PatientReportViewCard";
-import styles from "./styles/PatientOverview.module.css"
-
-function BasicInfoBar(){
-  return (
-  <div className={styles.patientInfoBar}>
-    <div><p>Name: Ume Hani</p></div>
-    <div><p>Age: 30</p></div>
-    <div><p>Sex: Female</p></div>
-    <div><p>Inpatient: Yes</p></div>
-    <div><p>ID: ZKUP38U (Aadhar Card)</p></div>
-  </div>
-  )
-}
+'use client'
+import ReportsViewCard from "./ReportsViewCard";
+import ExplorerSideBar from "./ExplorerSidebar";
+import { useState } from "react";
 
 type PatientOverview = {
-  showXray: boolean
+  patientReports?: boolean
 }
 
-export default function PatientOverview({ showXray }: PatientOverview) {
+export default function PatientOverview({ patientReports }: PatientOverview) {
+  const [ showXray, setShowXray] = useState(false)
+
   return (
-    <div className={styles.overviewCard}>
-      <BasicInfoBar />
-      <PatientReportViewCard showXray={showXray} />
-    </div>
+    <>
+      <ExplorerSideBar setShowXray={setShowXray} />
+      <ReportsViewCard showXray={showXray} />
+    </>
   )
 }

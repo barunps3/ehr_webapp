@@ -86,9 +86,9 @@ type recordFolder = {
 }
 
 export default function RecordFolder({
-  folderName = folders.folderName,
-  folderContent=folders.contents,
-  displayFileHandler
+    folderName = folders.folderName,
+    folderContent=folders.contents,
+    displayFileHandler
   }: recordFolder) {
 
   const [isExpanded, setExpansion] = useState(false) 

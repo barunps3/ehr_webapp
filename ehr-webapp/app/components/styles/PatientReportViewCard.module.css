@@ -1,3 +1,9 @@
+.reportsViewCard {
+  grid-row-start: info-bar-end;
+  display: flex;
+  justify-content: center;
+}
+
 .reportContainer {
   background-color: var(--content-color-2);
   margin-top: 20px;
