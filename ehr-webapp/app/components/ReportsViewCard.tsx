@@ -8,6 +8,7 @@ const testImages = [
 ]
 
 type ReportsViewCard = {
+  patientUUID: string
   showXray: boolean
 }
 
@@ -20,7 +21,7 @@ function Report() {
   )
 }
 
-export default function ReportsViewCard({ showXray }: ReportsViewCard) {
+export default function ReportsViewCard({ patientUUID, showXray }: ReportsViewCard) {
   return (
     <div className={styles.reportsViewCard}>
       { showXray ? <Report /> : <></> }

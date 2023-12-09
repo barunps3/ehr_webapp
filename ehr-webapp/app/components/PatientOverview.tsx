@@ -12,7 +12,7 @@ export default function PatientOverview(
   return (
     <>
       <ExplorerSideBar reportFiles={reportsList} setShowXray={setShowXray} />
-      <ReportsViewCard showXray={showXray} />
+      <ReportsViewCard patientUUID={data["UUID"]} showXray={showXray} />
     </>
   )
 }
