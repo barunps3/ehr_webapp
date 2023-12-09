@@ -2,17 +2,16 @@
 import ReportsViewCard from "./ReportsViewCard";
 import ExplorerSideBar from "./ExplorerSidebar";
 import { useState } from "react";
+import { PatientBasicInfo, ReportFiles } from "../utils/dataTypes";
 
-type PatientOverview = {
-  patientReports?: boolean
-}
+export default function PatientOverview(
+  { reportsList, data }: 
+  {reportsList: ReportFiles, data: PatientBasicInfo}) {
 
-export default function PatientOverview({ patientReports }: PatientOverview) {
   const [ showXray, setShowXray] = useState(false)
-
   return (
     <>
-      <ExplorerSideBar setShowXray={setShowXray} />
+      <ExplorerSideBar reportFiles={reportsList} setShowXray={setShowXray} />
       <ReportsViewCard showXray={showXray} />
     </>
   )

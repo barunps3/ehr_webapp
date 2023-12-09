@@ -8,4 +8,10 @@ export type searchParams = {
   idValue: string
 }
 
-export type FetchedPatientBasicInfo = typeof EmptyPatientBasicInfo
+export type PatientBasicInfo = typeof EmptyPatientBasicInfo
+
+export type ReportFiles = {
+  Xray: string[],
+  MRIScans: string[],
+  CTScans: string[],
+}
