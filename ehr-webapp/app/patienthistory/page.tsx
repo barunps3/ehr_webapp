@@ -1,14 +1,22 @@
-'use client'
 import React, { useState } from "react";
 import HeaderContent from "../components/HeaderContent";
-import ExplorerSideBar from "../components/ExplorerSidebar";
 import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
 
+function BasicInfoBar(){
+  return (
+  <div className="patientInfoBar">
+    <div><p>Name: Ume Hani</p></div>
+    <div><p>Age: 30</p></div>
+    <div><p>Sex: Female</p></div>
+    <div><p>Inpatient: Yes</p></div>
+    <div><p>ID: ZKUP38U (Aadhar Card)</p></div>
+  </div>
+  )
+}
 
 export default function AddPatientPage() {
-  const [ showXray, setShowXray] = useState(false)
 
   return (
     <>
@@ -20,12 +28,8 @@ export default function AddPatientPage() {
       </header>
 
       <div className="content">
-          <ExplorerSideBar 
-            setShowXray={setShowXray} />
-          <div className="verticalLine"></div>
-          <PatientOverview 
-            showXray={showXray}
-          />
+          <BasicInfoBar />
+          <PatientOverview />
       </div>
 
       <footer className="footer">

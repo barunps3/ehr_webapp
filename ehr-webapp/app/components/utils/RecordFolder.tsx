@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import styles from './styles/RecordFolder.module.css'
+import styles from '../styles/RecordFolder.module.css'
 
 type folder = {
   folderName: string
@@ -35,6 +35,7 @@ let folders = {
   ]
 }
 
+
 function onlyFilesExist (folderContents: Array<folder | string>) {
   for (const content in folderContents) {
     if (typeof folderContents[content] != 'string') {
@@ -50,6 +51,7 @@ type File = {
   setHighlighting: React.Dispatch<React.SetStateAction<string>>,
   displayFileHandler: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 
 function File({ fileName,
   isHighlighted,
@@ -76,6 +78,7 @@ function File({ fileName,
   )
 }
 
+
 type recordFolder = {
   folderName?: string,
   folderContent?: Array<folder | string>,
@@ -83,22 +86,20 @@ type recordFolder = {
 }
 
 export default function RecordFolder({
-  folderName = folders.folderName,
-  folderContent=folders.contents,
-  displayFileHandler
+    folderName = folders.folderName,
+    folderContent=folders.contents,
+    displayFileHandler
   }: recordFolder) {
 
   const [isExpanded, setExpansion] = useState(false) 
   const [highlightedFile, setHighlightedFile] = useState('')
 
-  console.log(folderName, isExpanded)
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
     setExpansion(!isExpanded)
   }
   
   if (onlyFilesExist(folderContent)) {
-
     return (
       <>
         <div onClick={handleClick} className="heading">{folderName}</div>
@@ -116,7 +117,6 @@ export default function RecordFolder({
         </div>
       </>
     )
-  
   }
 
   return (
