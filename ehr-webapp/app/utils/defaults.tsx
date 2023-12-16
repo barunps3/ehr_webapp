@@ -31,3 +31,9 @@ export const DefaultPatientFormData = {
   CurrentDept: HOSPITALDEPT.GenPhysician,
   Comments: ""
 }
+
+export const DefaultFolderName = {
+  Xrays: "X-Rays",
+  MRIScans: "MRI Scans",
+  CTScans: "CT Scans"
+}

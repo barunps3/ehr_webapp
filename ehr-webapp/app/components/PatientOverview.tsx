@@ -5,10 +5,10 @@ import { useState } from "react";
 import { PatientBasicInfo, ReportFiles } from "../utils/dataTypes";
 
 export default function PatientOverview(
-  { reportsList, data }: 
-  {reportsList: ReportFiles, data: PatientBasicInfo}) {
+  { reportsList, data }: {reportsList: ReportFiles, data: PatientBasicInfo}) {
+  
+  const [showXray, setShowXray] = useState(false)
 
-  const [ showXray, setShowXray] = useState(false)
   return (
     <>
       <ExplorerSideBar reportFiles={reportsList} setShowXray={setShowXray} />

@@ -11,7 +11,8 @@ export type searchParams = {
 export type PatientBasicInfo = typeof EmptyPatientBasicInfo
 
 export type ReportFiles = {
-  Xray: string[],
+  PatientUUID: string,
+  Xrays: string[],
   MRIScans: string[],
   CTScans: string[],
 }
