@@ -3,11 +3,6 @@ import { DefaultFolderName } from '../utils/defaults'
 import styles from './styles/ExplorerSidebar.module.css'
 import RecordFolder from './utils/RecordFolder'
 
-type ExplorerSideBar = {
-  reportFiles: ReportFiles
-  setShowXray: React.Dispatch<React.SetStateAction<boolean>>
-}
-
 let testFolders = {
   "X-Rays": {
     "2023": {
@@ -54,6 +49,11 @@ function generateFolderStructure(reports: string[]) {
     }
   }
   return yearFolder
+}
+
+type ExplorerSideBar = {
+  reportFiles: ReportFiles
+  setShowXray: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function ExplorerSideBar({ reportFiles, setShowXray }: ExplorerSideBar) {

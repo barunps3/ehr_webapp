@@ -2,54 +2,11 @@
 import { useState } from "react"
 import styles from '../styles/RecordFolder.module.css'
 
-// type folder = {
-//   folderName: string
-//   contents: Array<folder | string>
-// }
-
-// let folders = {
-//   folderName: "XRays",
-//   contents: [
-//     {
-//       folderName: "2023",
-//       contents: [
-//         {
-//           folderName: "March",
-//           contents: ["2023_03_11", "2023_03_27"],
-//         },
-//         {
-//           folderName: "April",
-//           contents: ["image_9.png", "image_10.png"]
-//         }
-//       ]
-//     },
-//     {
-//       folderName: "2022",
-//       contents: [
-//         {
-//           folderName: "September",
-//           contents: ["image_5.png", "image_6.png"],
-//         }
-//       ]
-//     }
-//   ]
-// }
-
-
-// function onlyFilesExist (folderContents: Array<folder | string>) {
-//   for (const content in folderContents) {
-//     if (typeof folderContents[content] != 'string') {
-//       return false
-//     }
-//   }
-//   return true
-// }
-
 type File = {
   fileName: string,
   isHighlighted: boolean,
   setHighlighting: React.Dispatch<React.SetStateAction<string>>,
-  displayFileHandler: React.Dispatch<React.SetStateAction<boolean>>
+  displayFileHandler: React.Dispatch<React.SetStateAction<string>>
 }
 
 
@@ -62,10 +19,12 @@ function File({ fileName,
     e.stopPropagation()
     if (isHighlighted) {
       setHighlighting("")
-      displayFileHandler(!isHighlighted)
+      displayFileHandler("")
+      console.log(`"" was unselected`)
     } else {
       setHighlighting(fileName)
-      displayFileHandler(!isHighlighted)
+      console.log(`${fileName} was selected`)
+      displayFileHandler(fileName)
     }
   }
 
@@ -85,7 +44,7 @@ type folderContent = {
 type recordFolder = {
   folderName: string,
   folderContent: folderContent,
-  showRecord: React.Dispatch<React.SetStateAction<boolean>>
+  showRecord: React.Dispatch<React.SetStateAction<string>>
 }
 
 let testFolders = {

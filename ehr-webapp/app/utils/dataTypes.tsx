@@ -16,3 +16,11 @@ export type ReportFiles = {
   MRIScans: string[],
   CTScans: string[],
 }
+
+export type Xray = {
+  Id: string,
+  UploadDate: string,
+  UploadedBy: string,
+  PatientUUID: string,
+  BlobUrl: string
+}

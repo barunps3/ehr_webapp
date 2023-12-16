@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'baum-image-data.s3.eu-central-1.amazonaws.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  }
+}
 
 module.exports = nextConfig

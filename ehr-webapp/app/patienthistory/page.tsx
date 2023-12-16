@@ -4,7 +4,7 @@ import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
 import { searchParams, PatientBasicInfo } from "../utils/dataTypes";
-import { getPatientBasicInfo, getPatientReportFiles } from "../lib/fetches";
+import { getListOfReports, getPatientBasicInfo } from "../lib/fetches";
 
 function BasicInfoBar({ data, idType, idValue }:
   {data: PatientBasicInfo, idType: string, idValue: string}){
@@ -24,7 +24,7 @@ export default async function PatientHistoryPage({ searchParams }:
   {searchParams: searchParams}) {
   
   const basicInfo = await getPatientBasicInfo(searchParams.idType, searchParams.idValue) 
-  const reportInfo = await getPatientReportFiles(basicInfo["UUID"]) 
+  const reportInfo = await getListOfReports(basicInfo["UUID"]) 
 
   return (
     <>
