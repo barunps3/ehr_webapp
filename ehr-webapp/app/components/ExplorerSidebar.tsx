@@ -30,11 +30,15 @@ type yearFolder = {
 
 function generateFolderStructure(reports: string[]) {
   const yearFolder: yearFolder = {}
-
-  for (const uploadDateStr in reports) {
+  console.log("reports:", reports)
+  for (const uploadDateStr of reports) {
+    console.log("uploadDateString", uploadDateStr)
     const uploadDate = new Date(uploadDateStr)
+    console.log("uploadDate Datetime", uploadDate)
     const year = uploadDate.getFullYear().toString()
+    console.log(year)
     const month = uploadDate.toLocaleString('en-us', { month: 'long' });
+    console.log(month)
 
     if (year in yearFolder) {
       if (month in yearFolder[year]) {
