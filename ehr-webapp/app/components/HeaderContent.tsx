@@ -40,7 +40,7 @@ function HeaderWithNav() {
   )
 }
 
-export default function HeaderContent({ pageName }: {pageName: PAGENAME}) {
+export default function HeaderContent({ pageName }: {pageName?: PAGENAME}) {
   if (pageName === PAGENAME.PatientHistory) {
     return ( 
       <HeaderWithNav />

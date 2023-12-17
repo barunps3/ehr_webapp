@@ -3,20 +3,28 @@ import HeaderContent from "../components/HeaderContent";
 import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
+import { searchParams, PatientBasicInfo } from "../utils/dataTypes";
+import { getListOfReports, getPatientBasicInfo } from "../lib/fetches";
 
-function BasicInfoBar(){
+function BasicInfoBar({ data, idType, idValue }:
+  {data: PatientBasicInfo, idType: string, idValue: string}){
   return (
   <div className="patientInfoBar">
-    <div><p>Name: Ume Hani</p></div>
+    <div><p>Name: {data.FirstName} {data.LastName}</p></div>
     <div><p>Age: 30</p></div>
-    <div><p>Sex: Female</p></div>
-    <div><p>Inpatient: Yes</p></div>
-    <div><p>ID: ZKUP38U (Aadhar Card)</p></div>
+    <div><p>Sex: {data.Gender}</p></div>
+    <div><p>Inpatient: {data.CurrentCare === "INPATIENT" ? "Yes" : "No"}</p></div>
+    <div><p>ID: {idValue} {idType}</p></div>
   </div>
   )
 }
 
-export default function AddPatientPage() {
+
+export default async function PatientHistoryPage({ searchParams }: 
+  {searchParams: searchParams}) {
+  
+  const basicInfo = await getPatientBasicInfo(searchParams.idType, searchParams.idValue) 
+  const reportInfo = await getListOfReports(basicInfo["UUID"]) 
 
   return (
     <>
@@ -28,8 +36,8 @@ export default function AddPatientPage() {
       </header>
 
       <div className="content">
-          <BasicInfoBar />
-          <PatientOverview />
+          <BasicInfoBar data={basicInfo} idType={searchParams.idType} idValue={searchParams.idValue} />
+          <PatientOverview reportsList={reportInfo} data={basicInfo} />
       </div>
 
       <footer className="footer">

@@ -4,25 +4,7 @@ import { useForm } from "react-hook-form"
 import styles from "./styles/EnterPatient.module.css"
 import { PatientFormData } from "../utils/dataTypes";
 import { CARETYPE, GENDER, HOSPITALDEPT, NATIONALID } from "../utils/constants";
-import {v4 as uuidv4} from 'uuid';
-
-
-let emptyFormData: PatientFormData = {
-  FirstName: "",
-  LastName: "",
-  Gender: GENDER.Male,
-  DateOfBirth: "",
-  InsuranceId: "",
-  PhoneNum: "",
-  EmergencyPhoneNum: "",
-  Address: "",
-  NationalIDType: NATIONALID.AadharCard,
-  NationalIDValue: "",
-  PatientUUID: uuidv4(),
-  InPatient: CARETYPE.OutPatient,
-  CurrentDept: HOSPITALDEPT.GenPhysician,
-  Comments: ""
-}
+import { DefaultPatientFormData } from "../utils/defaults";
 
 let markedInput: Record<keyof PatientFormData, boolean> = {
   FirstName: false,
@@ -47,7 +29,7 @@ type entryFormInput = {
 }
 
 export default function PatientEntryForm({ isEditMode = false, data }: entryFormInput) {
-  let defaultData: PatientFormData = emptyFormData
+  let defaultData: PatientFormData = DefaultPatientFormData
   if (data) defaultData = data
   
   const [editedInputs, setEditedInput] = useState(markedInput)
