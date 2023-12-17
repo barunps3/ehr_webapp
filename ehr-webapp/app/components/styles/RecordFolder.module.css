@@ -4,4 +4,9 @@
   height: auto;
   background-color: var(--header-color-2);
   color: white;
+  cursor: pointer;
+}
+
+.folderOrFile {
+  cursor: pointer;
 }

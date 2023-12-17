@@ -3,8 +3,9 @@ import styles from '../styles/PatientReportViewCard.module.css'
 import ImageMaximizer from "./ImageMaximizer"
 import { useState, useRef, useEffect } from "react"
 
-export default function ImageGallery({ defaultImages }: {defaultImages: string[]}) {
-  const [ mainImage, setMainImage ] = useState(defaultImages[0])
+export default function ImageGallery({ defaultImages }: { defaultImages: string[]}) {
+  const [ selectedImage, setMainImage ] = useState(defaultImages[0])
+  // console.log("default main image:", mainImage)
   const [ showImgMaximizer, setShowImgMaximizer ] = useState(false)
   const imageGallery = useRef<HTMLDivElement>(null)
   const [ inFullscreenMode, setScreenMode ] = useState(false)
@@ -53,7 +54,7 @@ export default function ImageGallery({ defaultImages }: {defaultImages: string[]
           onClick={toggleFullScreen}
           isMaximized={inFullscreenMode} />
         <Image 
-          src={mainImage}
+          src={selectedImage}
           alt="lumbar-spine-front"
           fill={true}
           className={styles.image}

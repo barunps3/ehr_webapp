@@ -3,7 +3,7 @@ import ImageGallery from "./utils/ImageGallery"
 import CommentsCard from "./utils/CommentsCard"
 import { getReports } from "../lib/fetches"
 import styles from './styles/PatientReportViewCard.module.css'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const testImages = [
   "/localImages/lumbar-spine-front.png",
@@ -12,23 +12,27 @@ const testImages = [
 
 export default function Report({ patientUUID, reportType, showReport }: 
   {patientUUID: string, reportType: string, showReport: string}) {
+  const [fetchedImages, setImages] = useState<string[]>([])
 
-  const defaultImages: string[] = []      
   useEffect(() => {
-    async function doWork() {
+    async function fetchImages() {
+      const images = []
       const reports = await getReports(patientUUID, reportType, showReport) 
       for (const report of reports) {
-        defaultImages.push(report["BlobUrl"])
+        images.push(report["BlobUrl"])
       }
+      setImages(images)
     }
-    doWork()
+    fetchImages()
   }, [])
 
-  console.log("blob Images", defaultImages)
-  return (
-    <div className={styles.reportContainer}>
-      <ImageGallery defaultImages={defaultImages}/>
-      <CommentsCard />
-    </div>
-  )
+  console.log("blob Images", fetchedImages)
+  if (fetchedImages.length != 0) {
+    return (
+      <div className={styles.reportContainer}>
+        <ImageGallery defaultImages={fetchedImages}/>
+        <CommentsCard />
+      </div>
+    )
+  }
 }

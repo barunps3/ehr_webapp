@@ -40,7 +40,7 @@ export async function getReports(
     {
       method: "GET", 
       headers: {"Accept": "application/json"},
-      cache: 'no-cache'
+      // cache: 'no-cache'
     }).then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);

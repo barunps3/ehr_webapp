@@ -30,7 +30,7 @@ function File({ fileName,
 
   return (
     <div 
-      className={isHighlighted ? styles.selectedFile : "unselected"}
+      className={isHighlighted ? styles.selectedFile : styles.folderOrFile}
       onClick={highlightFile}>
         {fileName}
     </div>
@@ -77,7 +77,7 @@ export default function RecordFolder({
   if (Array.isArray(folderContent)) {
     return (
       <>
-        <div onClick={handleClick} className="heading">{folderName}</div>
+        <div onClick={handleClick} className={styles.folderOrFile}>{folderName}</div>
         <div style={isExpanded ? {display: 'block', paddingLeft: "10px"} : {display: 'none'}}>
           {folderContent.map((fileName, index) => {
             if (typeof fileName === 'string') {
@@ -97,7 +97,7 @@ export default function RecordFolder({
   const childFolders = Object.keys(folderContent)
   return (
     <>
-      <div onClick={handleClick}  className="heading">{folderName}</div>
+      <div onClick={handleClick}  className={styles.folderOrFile}>{folderName}</div>
       <div style={isExpanded ? {display: 'block', paddingLeft: "15px"} : {display: 'none'}} onClick={handleClick}>
         {childFolders.map((folderName, index) => {
           return <RecordFolder
