@@ -23,7 +23,7 @@ export default function SearchPage() {
         <div className="company-header light-blue"></div>
       </header>
 
-      <div className="content">
+      <div className="searchContent">
         <SearchCard setSearchResult={setSearchResult} />
         <SearchResultCard searchResult={searchResult} />
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import HeaderContent from "../components/HeaderContent";
 import PatientOverview from "../components/PatientOverview";
 import './patientHistory.css'
@@ -35,7 +35,7 @@ export default async function PatientHistoryPage({ searchParams }:
         <div className="company-header light-blue"></div>
       </header>
 
-      <div className="content">
+      <div className="patientHistContent">
           <BasicInfoBar data={basicInfo} idType={searchParams.idType} idValue={searchParams.idValue} />
           <PatientOverview reportsList={reportInfo} data={basicInfo} />
       </div>

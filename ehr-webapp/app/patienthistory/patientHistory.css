@@ -2,7 +2,7 @@
   --patient-info-bar: 30px
 }
 
-.content {
+.patientHistContent {
   position: relative;
   top: var(--header-height);
   min-height: calc(100vh - 2 * var(--header-height));

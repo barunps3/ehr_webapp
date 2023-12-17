@@ -9,32 +9,41 @@ function ResultRow({ patient }: {patient: PatientFormData}) {
   const router = useRouter();
   console.log("value in result row:", patient)
   return (
-    <tr key={patient.NationalIDValue}>
+    <tr>
       <td>{patient.FirstName} {patient.LastName}</td>
       <td>{patient.Gender}</td>
       <td>{patient.DateOfBirth}</td>
       <td>{patient.NationalIDType}</td>
       <td>{patient.NationalIDValue}</td>
-      <td><Link href={{
+      <td>
+        <Link href={{
           pathname: '/search/patient',
           query: {
             idType: `${patient.NationalIDType}`,
             idValue: `${patient.NationalIDValue}`,
           }
-        }}>Link</Link></td>
+        }}>Profile</Link><br />
+        <Link href={{
+          pathname: '/patienthistory',
+          query: {
+            idType: `${patient.NationalIDType}`,
+            idValue: `${patient.NationalIDValue}`,
+          }
+        }}>History</Link>
+        </td>
     </tr>
   )
 }
 
 export default function SearchResultCard({ searchResult }: { searchResult: PatientFormData[] }) {
-  const patients = searchResult.map((patient) => <ResultRow patient={patient} />)
+  const patients = searchResult.map((patient, index) => <ResultRow patient={patient} key={index} />)
 
   if (searchResult.length > 0) {
     return (
       <div className={styles.resultsContainer}>
         <table>
           <tbody>
-            <tr className={styles.headerRow}>
+            <tr key={0} className={styles.headerRow}>
               <td>Name</td><td>Gender</td><td>Date of Birth</td><td>ID Type</td><td>ID value</td><td>View</td>
             </tr>
             {patients}
