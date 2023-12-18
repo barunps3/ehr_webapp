@@ -1,7 +1,8 @@
 .reportsViewCard {
   grid-row-start: info-bar-end;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reportContainer {

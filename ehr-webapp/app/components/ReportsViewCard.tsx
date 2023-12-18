@@ -44,8 +44,11 @@ type ReportsViewCard = {
 
 export default function ReportsViewCard({ patientUUID, showXray }: ReportsViewCard) {
   return (
-    <div className={styles.reportsViewCard}>
-      { showXray ? <Report patientUUID={patientUUID} reportType="xrays" showReport={showXray} /> : <></> }
-    </div>
+    <>
+      <div className={styles.reportsViewCard}>
+        { showXray ? <Report patientUUID={patientUUID} reportType="xrays" showReport={showXray} /> : <></> }
+        { showXray ? <Report patientUUID={patientUUID} reportType="xrays" showReport={showXray} /> : <></> }
+      </div>
+    </>
   )
 }

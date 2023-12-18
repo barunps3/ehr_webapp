@@ -1,9 +1,10 @@
 import { PatientBasicInfo } from "../utils/dataTypes";
+import styles from "./styles/BasicInfoBar.module.css"
 
 export default function BasicInfoBar({ data, idType, idValue }:
   {data: PatientBasicInfo, idType: string, idValue: string}){
   return (
-  <div className="patientInfoBar">
+  <div className={styles.patientInfoBar}>
     <div><p>Name: {data.FirstName} {data.LastName}</p></div>
     <div><p>Age: 30</p></div>
     <div><p>Sex: {data.Gender}</p></div>
