@@ -16,6 +16,7 @@
   --search-border-width: 1px;
   --nav-bar-content-height: 30px;
   --nav-bar-content-align: center;
+  --patient-info-bar: 30px
 }
 
 .body {
@@ -65,3 +66,31 @@
   width: 100%;
 }
 
+.patientHistContent {
+  position: relative;
+  top: var(--header-height);
+  min-height: calc(100vh - 2 * var(--header-height));
+  display: grid;
+  grid-template-columns: [sidebar-start] var(--side-bar-width) [sidebar-end] auto [end];
+  grid-template-rows: [info-bar-start] var(--patient-info-bar) [info-bar-end] auto [end];
+  width: 100vw;
+}
+
+.verticalLine {
+  width: 2px;
+  background-color: var(--content-color-2);
+}
+
+.patientInfoBar {
+  position: sticky;
+  grid-column-start: sidebar-end;
+  grid-row-start: info-bar-start;
+  grid-row-end: info-bar-end;
+  top: var(--header-height);
+  color: white;
+  background-color: var(--header-color-2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

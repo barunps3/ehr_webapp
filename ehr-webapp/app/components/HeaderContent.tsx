@@ -41,7 +41,8 @@ function HeaderWithNav() {
 }
 
 export default function HeaderContent({ pageName }: {pageName?: PAGENAME}) {
-  if (pageName === PAGENAME.PatientHistory) {
+  if (pageName === PAGENAME.PatientHistory || 
+      pageName === PAGENAME.UploadPage) {
     return ( 
       <HeaderWithNav />
     )

@@ -1,15 +1,15 @@
 import React from "react";
 import HeaderContent from "../components/HeaderContent";
-import PatientOverview from "../components/PatientOverview";
-import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
-import { searchParams } from "../utils/dataTypes";
-import { getListOfReports, getPatientBasicInfo } from "../lib/fetches";
+import { getPatientBasicInfo, getListOfReports } from "../lib/fetches";
 import BasicInfoBar from "../components/BasicInfoBar";
+import { searchParams } from "../utils/dataTypes";
+import PatientOverview from "../components/PatientOverview";
 
-export default async function PatientHistoryPage({ searchParams }: 
+
+export default async function AddPatientPage({ searchParams }: 
   {searchParams: searchParams}) {
-  
+
   const basicInfo = await getPatientBasicInfo(searchParams.idType, searchParams.idValue) 
   const reportInfo = await getListOfReports(basicInfo["UUID"]) 
 
@@ -17,7 +17,7 @@ export default async function PatientHistoryPage({ searchParams }:
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent pageName={PAGENAME.PatientHistory}/>
+          <HeaderContent pageName={PAGENAME.UploadPage} />
         </div>
         <div className="company-header light-blue"></div>
       </header>
