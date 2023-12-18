@@ -22,14 +22,14 @@ function ResultRow({ patient }: {patient: PatientFormData}) {
             idType: `${patient.NationalIDType}`,
             idValue: `${patient.NationalIDValue}`,
           }
-        }}>Profile</Link><br />
+        }} target="_blank">Edit Profile</Link><br />
         <Link href={{
           pathname: '/patienthistory',
           query: {
             idType: `${patient.NationalIDType}`,
             idValue: `${patient.NationalIDValue}`,
           }
-        }}>History</Link>
+        }} target="_blank">Medical History</Link>
         </td>
     </tr>
   )

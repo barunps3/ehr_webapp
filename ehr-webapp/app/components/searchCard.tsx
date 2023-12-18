@@ -2,6 +2,7 @@ import React from "react"
 import styles from './styles/SearchCard.module.css'
 import { PatientFormData } from "../utils/dataTypes"
 import { NATIONALID } from '../utils/constants'
+import Link from "next/link";
 
 
 async function getPatientByIdType(
@@ -63,7 +64,9 @@ export default function SearchCard({ setSearchResult }:
       </form>
       <div>
         <button className={styles.btn} form="search-id" type="submit">Search</button>
-        <button className={styles.btn} id={styles.addPatient} type="button">+ Add new patient</button>
+        <Link href="/patiententry" target="_blank">
+          <button className={styles.btn} id={styles.addPatient} type="button">+ Add new patient</button>
+        </Link>
       </div>
 
     </div>
