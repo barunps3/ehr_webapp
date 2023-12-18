@@ -1,7 +1,6 @@
 import React from "react";
 import HeaderContent from "../components/HeaderContent";
 import PatientOverview from "../components/PatientOverview";
-import './patientHistory.css'
 import { PAGENAME } from "../utils/constants";
 import { searchParams } from "../utils/dataTypes";
 import { getListOfReports, getPatientBasicInfo } from "../lib/fetches";
