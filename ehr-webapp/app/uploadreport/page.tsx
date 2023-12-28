@@ -4,7 +4,7 @@ import { PAGENAME } from "../utils/constants";
 import { getPatientBasicInfo, getListOfReports } from "../lib/fetches";
 import BasicInfoBar from "../components/BasicInfoBar";
 import { searchParams } from "../utils/dataTypes";
-import PatientOverview from "../components/PatientOverview";
+import ReportUploadOverview from "../components/ReportUploadOverview";
 
 
 export default async function AddPatientPage({ searchParams }: 
@@ -24,7 +24,7 @@ export default async function AddPatientPage({ searchParams }:
 
       <div className="patientHistContent">
           <BasicInfoBar data={basicInfo} idType={searchParams.idType} idValue={searchParams.idValue} />
-          <PatientOverview reportsList={reportInfo} data={basicInfo} />
+          <ReportUploadOverview reportsList={reportInfo} data={basicInfo} />
       </div>
 
       <footer className="footer">

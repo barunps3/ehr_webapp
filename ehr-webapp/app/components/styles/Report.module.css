@@ -1,0 +1,10 @@
+.reportContainer {
+  background-color: var(--content-color-2);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
