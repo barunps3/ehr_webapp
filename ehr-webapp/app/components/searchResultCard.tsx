@@ -1,12 +1,10 @@
 import React from "react";
 import styles from './styles/SearchCard.module.css'
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PatientFormData } from "../utils/dataTypes";
 
 
 function ResultRow({ patient }: {patient: PatientFormData}) {
-  const router = useRouter();
   console.log("value in result row:", patient)
   return (
     <tr>
