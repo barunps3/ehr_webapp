@@ -10,12 +10,22 @@ const inputFileExt = {
 }
 
 export default function ReportUploadCard() {
-  const [selectedReportType, setSelectedReportType] = useState("")
   const hiddenFileInput = useRef<HTMLInputElement>(null)
+  const [selectedReportType, setSelectedReportType] = useState("")
   const [selectedFiles, setSelectedFiles] = useState<FileList>()
   const [fileDataUrls, setFileDataUrls] = useState<Array<string>>([])
+
   let acceptedInputFileExt = ""
 
+  function handleReset() {
+    setSelectedReportType("")
+    setSelectedFiles(undefined)
+    setFileDataUrls([])
+  }
+
+  function handleFormSubmission(e: React.FormEvent) {
+    e.preventDefault()
+  }
   // useEffect as file reading is async
   useEffect(() => {
     let imageList: string[] = []
@@ -49,30 +59,18 @@ export default function ReportUploadCard() {
 
     switch (selectedBtn) {
       case "xRay":
-        if (selectedReportType === "xRay") {
-          setSelectedReportType("")
-        } else {
-          acceptedInputFileExt = inputFileExt["xRay"]
-          setSelectedReportType("xRay")
-          console.log("xray was selected", acceptedInputFileExt)
-        }
+        acceptedInputFileExt = inputFileExt["xRay"]
+        setSelectedReportType("xRay")
+        console.log("xray was selected", acceptedInputFileExt)
         break
       case "mriScan":
-        if (selectedReportType === "mriScan") {
-          setSelectedReportType("")
-        } else {
-          setSelectedReportType("mriScan")
-          acceptedInputFileExt = inputFileExt["mriScan"]
-        }
+        setSelectedReportType("mriScan")
+        acceptedInputFileExt = inputFileExt["mriScan"]
         console.log("mriScan was selected")
         break
       case "bloodTest":
-        if (selectedReportType === "bloodTest") {
-          setSelectedReportType("bloodTest")
-        } else {
-          setSelectedReportType("bloodTest")
-          acceptedInputFileExt = inputFileExt["mriScan"]
-        }
+        setSelectedReportType("bloodTest")
+        acceptedInputFileExt = inputFileExt["mriScan"]
         console.log("bloodTest was selected")
         break
       default:
@@ -115,7 +113,7 @@ export default function ReportUploadCard() {
         </button>
       </div>
 
-      <form className={styles.uplodImagesForm}>
+      <form onSubmit={handleFormSubmission} className={styles.uplodImagesForm}>
         <div className={styles.addComments}>
           <label htmlFor="commentToUpload">Your Comments:</label><br />
           <textarea name="commentToUpload" id="commentToUpload" rows={4}></textarea>
@@ -129,7 +127,7 @@ export default function ReportUploadCard() {
             onChange={handleInputFileChange}
             name="file" multiple />
           <button type="submit">Upload</button>
-          <button type="submit">Reset</button>
+          <button onClick={handleReset} type="submit">Reset</button>
         </div>
       </form>
     </div>
