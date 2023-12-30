@@ -24,8 +24,12 @@ export function Report({ patientUUID, reportType, showReport }:
   if (fetchedImages.length != 0) {
     return (
       <div className={styles.reportContainer}>
-        <ImageGallery defaultImages={fetchedImages}/>
-        <CommentsCard />
+        <div style={{width: "60%", height: "100%"}}>
+          <ImageGallery defaultImages={fetchedImages}/>
+        </div>
+        <div style={{width: "40%", height: "100%"}}>
+          <CommentsCard />
+        </div>
       </div>
     )
   }

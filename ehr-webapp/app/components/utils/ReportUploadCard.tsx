@@ -1,5 +1,7 @@
-import { useRef, useState } from "react"
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 import styles from "../styles/ReportUploadOverview.module.css"
+import ImageGallery from "./ImageGallery"
 
 const inputFileExt = {
   "xRay": ".jpg, .jpeg, .png",
@@ -7,10 +9,46 @@ const inputFileExt = {
   "bloodTest": ".pdf"
 }
 
+type image = {
+  src: string,
+  file: File
+}
+
+
 export default function ReportUploadCard() {
   const [selectedReportType, setSelectedReportType] = useState("")
   const hiddenFileInput = useRef<HTMLInputElement>(null)
+  const [selectedFiles, setSelectedFiles] = useState<FileList>()
+  const [fileDataUrls, setFileDataUrls] = useState<Array<string>>([])
   let acceptedInputFileExt = ""
+
+  // useEffect as file reading is async
+  useEffect(() => {
+    let imageList: string[] = []
+    if (selectedFiles) {
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const reader = new FileReader()
+        reader.onload = (e) =>{
+          const imgSrc = e.target?.result
+          if (typeof(imgSrc) === 'string') {
+            imageList.push(imgSrc)
+          }
+          // When reading the last img has finished, update component state
+          if (i === (selectedFiles.length - 1)) {
+            setFileDataUrls(imageList)
+          }
+        }
+        reader.readAsDataURL(selectedFiles[i])
+      }
+    }
+  }, [selectedFiles])
+
+  function handleInputFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const fileList = e.currentTarget.files
+    if (fileList) {
+      setSelectedFiles(fileList)
+    }
+  }
 
   function handleSelection(e: React.MouseEvent<HTMLButtonElement>) {
     const selectedBtn = e.currentTarget.id
@@ -58,7 +96,10 @@ export default function ReportUploadCard() {
 
   return (
     <div className={styles.reportUploadContainer}>
-      <div className={styles.previewContainer}></div>
+      <div className={styles.previewContainer}>
+        {/* {fileDataUrls.length ? <Image src={fileDataUrls[0]} alt={selectedFiles.} width={100} height={100}/> : <></>} */}
+        {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
+      </div>
 
       <div className={styles.fileTypeSelector}>
         <button id="xRay" disabled={selectedReportType === "xRay" || selectedReportType === "" ? false : true} onClick={handleSelection} type="button">X-Rays (*.png/.jpg/.jpeg)</button>
@@ -69,7 +110,7 @@ export default function ReportUploadCard() {
       <form className={styles.uplodImagesForm}>
         <div className={styles.addComments}>
           <label htmlFor="commentToUpload">Your Comments:</label><br />
-          <textarea name="commentToUpload" id="commentToUpload" rows={3}></textarea>
+          <textarea name="commentToUpload" id="commentToUpload" rows={4}></textarea>
         </div>
 
         <div className={styles.uploadFunction}>
@@ -77,6 +118,7 @@ export default function ReportUploadCard() {
             type="file"
             id="file" style={{ display: "none" }}
             ref={hiddenFileInput}
+            onChange={handleInputFileChange}
             name="file" multiple />
           <button type="submit">Upload</button>
           <button type="submit">Reset</button>
