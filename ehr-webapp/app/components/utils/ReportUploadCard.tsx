@@ -9,12 +9,6 @@ const inputFileExt = {
   "bloodTest": ".pdf"
 }
 
-type image = {
-  src: string,
-  file: File
-}
-
-
 export default function ReportUploadCard() {
   const [selectedReportType, setSelectedReportType] = useState("")
   const hiddenFileInput = useRef<HTMLInputElement>(null)
@@ -97,14 +91,28 @@ export default function ReportUploadCard() {
   return (
     <div className={styles.reportUploadContainer}>
       <div className={styles.previewContainer}>
-        {/* {fileDataUrls.length ? <Image src={fileDataUrls[0]} alt={selectedFiles.} width={100} height={100}/> : <></>} */}
         {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
       </div>
 
       <div className={styles.fileTypeSelector}>
-        <button id="xRay" disabled={selectedReportType === "xRay" || selectedReportType === "" ? false : true} onClick={handleSelection} type="button">X-Rays (*.png/.jpg/.jpeg)</button>
-        <button id="mriScan" disabled={selectedReportType === "mriScan" || selectedReportType === "" ? false : true} onClick={handleSelection} type="button">MRI Scans (*.png/.jpg/.jpeg)</button>
-        <button id="bloodTest" disabled={selectedReportType === "bloodTest" || selectedReportType === "" ? false : true } onClick={handleSelection} type="button">Blood Test (*.pdf)</button>
+        <button id="xRay" 
+          disabled={selectedFiles && selectedReportType !== "xRay" ? true : false}
+          onClick={handleSelection}
+          type="button">
+            X-Rays (*.png/.jpg/.jpeg)
+        </button>
+        <button id="mriScan"
+          disabled={selectedFiles && selectedReportType !== "mriScan" ? true : false}
+          onClick={handleSelection}
+          type="button">
+            MRI Scans (*.png/.jpg/.jpeg)
+        </button>
+        <button id="bloodTest"
+          disabled={selectedFiles && selectedReportType !== "bloodTest" ? true : false} 
+          onClick={handleSelection} 
+          type="button">
+            Blood Test (*.pdf)
+        </button>
       </div>
 
       <form className={styles.uplodImagesForm}>
