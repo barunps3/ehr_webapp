@@ -16,6 +16,7 @@
   --search-border-width: 1px;
   --nav-bar-content-height: 30px;
   --nav-bar-content-align: center;
+  --patient-info-bar: 30px
 }
 
 .body {
@@ -28,7 +29,7 @@
 .header {
   position: fixed;
   top: 0px;
-  z-index: 1;
+  z-index: 5;
 }
 
 .company-header {
@@ -65,3 +66,17 @@
   width: 100%;
 }
 
+.patientHistContent {
+  position: relative;
+  top: var(--header-height);
+  min-height: calc(100vh - 2 * var(--header-height));
+  display: grid;
+  grid-template-columns: [sidebar-start] var(--side-bar-width) [sidebar-end] auto [end];
+  grid-template-rows: [info-bar-start] var(--patient-info-bar) [info-bar-end] auto [end];
+  width: 100vw;
+}
+
+.verticalLine {
+  width: 2px;
+  background-color: var(--content-color-2);
+}

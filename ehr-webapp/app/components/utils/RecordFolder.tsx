@@ -67,7 +67,7 @@ export default function RecordFolder({
   }: recordFolder) {
 
   const [isExpanded, setExpansion] = useState(false) 
-  const [highlightedFile, setHighlightedFile] = useState('')
+  const [highlightedFile, setHighlightedFile] = useState("")
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
