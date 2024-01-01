@@ -68,7 +68,7 @@ function f(x: number, y: string): void { }
 
 ## Folder Structure
 - Components used directly in a pages must be placed in app/components
-- Components shared between Components(for eg called in page.tsx) must be placed in app/utils/components
+- Components shared between Components (which were called in page.tsx) must be placed in app/utils/components
 
 # CSS Styling
 - Color palette used: https://colorhunt.co/palette/f5efe7d8c4b64f709c213555. Please check app/globals.css
