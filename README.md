@@ -1,3 +1,6 @@
+It is an app to organize patient reports in a hospital.
+All the patient reports generated in the separate departments of hospital is organized in centralized database. Similar to [PACs system](https://www.medicorimaging.com/products/mipacs-storage-server?SrcOrigin=Google-CPC-pacs%20system&MatchType=p&AdPos=&gad_source=1&gclid=CjwKCAiA4smsBhAEEiwAO6DEjcGSkiiO81no5KBt0iCq1jhTr0DGJPTMvg2semaGvMLoiFj3Leao8hoC2dkQAvD_BwE).
+
 This is a [Next.js](https://nextjs.org/) project
 
 # Getting Started
@@ -5,20 +8,17 @@ This is a [Next.js](https://nextjs.org/) project
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the Login Page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Try to Open the following pages.
+- http://localhost:3000/search (to search of patients)
+- http://localhost:3000/patiententry (to enter new patients)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+After you setup [backend api](https://github.com/barunps3/patient_api) properly, you can also try to view the following page to test end-to-end
+- http://localhost:3000/patienthistory?idType=AadharCard&idValue=a0d1I5b50ye9
 
 
 # Coding Guidelines 
@@ -81,6 +81,9 @@ function f(x: number, y: string): void { }
 
 
 # Appendix
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
