@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './styles/HeaderContent.module.css'
-import { PAGENAME } from "../utils/constants";
+import { PageName } from "../utils/constants";
 import Link from "next/link";
 
 function HeaderWithOnlyName() {
@@ -40,9 +40,9 @@ function HeaderWithNav() {
   )
 }
 
-export default function HeaderContent({ pageName }: {pageName?: PAGENAME}) {
-  if (pageName === PAGENAME.PatientHistory || 
-      pageName === PAGENAME.UploadPage) {
+export default function HeaderContent({ pageName }: {pageName?: PageName}) {
+  if (pageName === PageName.PatientHistory || 
+      pageName === PageName.UploadPage) {
     return ( 
       <HeaderWithNav />
     )

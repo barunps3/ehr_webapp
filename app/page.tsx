@@ -1,13 +1,13 @@
 import HeaderContent from "./components/HeaderContent"
 import LoginCard from "./components/LoginCard"
-import { PAGENAME } from "./utils/constants"
+import { PageName } from "./utils/constants"
 
 export default function Login() {
   return (
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent pageName={PAGENAME.LoginPage}/>
+          <HeaderContent pageName={PageName.LoginPage}/>
         </div>
         <div className="company-header light-blue"></div>
       </header>

@@ -38,3 +38,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Color palette : https://colorhunt.co/palette/f5efe7d8c4b64f709c213555
 Border radius of components except buttons: 10px
 Font Family: Sans-serif
+
+
+Capitalization
+PascalCase for :
+  type Names
+  Constant Enum Values
+  DefaultVariable Names, DefaultVariable Keys
+
+CamelCase for :
+
+
+UPPERCASE for :
+  Constant Enum Variable Name
