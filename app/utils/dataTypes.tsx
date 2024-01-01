@@ -1,10 +1,10 @@
-import { NATIONALID } from './constants'
+import { NationalId } from './constants'
 import { DefaultPatientFormData, EmptyPatientBasicInfo } from './defaults'
 
 export type PatientFormData = typeof DefaultPatientFormData
 
 export type searchParams = {
-  idType: NATIONALID,
+  idType: NationalId,
   idValue: string
 }
 

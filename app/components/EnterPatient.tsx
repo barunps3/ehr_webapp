@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { useForm } from "react-hook-form"
 import styles from "./styles/EnterPatient.module.css"
 import { PatientFormData } from "../utils/dataTypes";
-import { CARETYPE, GENDER, HOSPITALDEPT, NATIONALID } from "../utils/constants";
+import { CareType, Gender, HospitalDept, NationalId } from "../utils/constants";
 import { DefaultPatientFormData } from "../utils/defaults";
 
 let markedInput: Record<keyof PatientFormData, boolean> = {
@@ -98,9 +98,9 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
             id="Gender" 
             style={changeToEditStyle("Gender")} 
             onChange={textChange} defaultValue={defaultData.Gender}>
-            <option value={GENDER.Male}>Male</option>
-            <option value={GENDER.Female}>Female</option>
-            <option value={GENDER.Other}>Other</option>
+            <option value={Gender.Male}>Male</option>
+            <option value={Gender.Female}>Female</option>
+            <option value={Gender.Other}>Other</option>
           </select>
         </div>
         <div>
@@ -135,8 +135,8 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
               // defaultValue={defaultData.NationalIDType}
               required>
               <option value="" disabled>ID Type</option>
-              <option value={NATIONALID.AadharCard}>Aadhar Card</option>
-              <option value={NATIONALID.Passport}>Passport</option>
+              <option value={NationalId.AadharCard}>Aadhar Card</option>
+              <option value={NationalId.Passport}>Passport</option>
             </select>
             <input {...register("NationalIDValue")}
               type="search"
@@ -157,11 +157,11 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
             {...register("CurrentDept")}
             style={changeToEditStyle("CurrentDept")} 
             onChange={textChange} id="departmentSelected" defaultValue={defaultData.CurrentDept}>
-            <option value={HOSPITALDEPT.Orthopaedic}>Orthopaedic</option>
-            <option value={HOSPITALDEPT.GenPhysician}>General Physician</option>
-            <option value={HOSPITALDEPT.Cancer}>Cancer</option>
-            <option value={HOSPITALDEPT.Radiology}>Radiology</option>
-            <option value={HOSPITALDEPT.Gynecologist}>Gynecologist</option>
+            <option value={HospitalDept.Orthopaedic}>Orthopaedic</option>
+            <option value={HospitalDept.GenPhysician}>General Physician</option>
+            <option value={HospitalDept.Cancer}>Cancer</option>
+            <option value={HospitalDept.Radiology}>Radiology</option>
+            <option value={HospitalDept.Gynecologist}>Gynecologist</option>
           </select>
         </div>
 
@@ -169,7 +169,7 @@ export default function PatientEntryForm({ isEditMode = false, data }: entryForm
           <input {...register("InPatient")}
             type="checkbox" className={styles.inPatientCheckbox} style={changeToEditStyle("InPatient")} 
             onChange={textChange} id="inPatient"
-            checked={defaultData.InPatient == CARETYPE.InPatient}/>
+            checked={defaultData.InPatient == CareType.InPatient}/>
           <label htmlFor="inPatient">In Patient</label>
         </div>
       </fieldset>

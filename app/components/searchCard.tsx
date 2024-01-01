@@ -1,13 +1,13 @@
 import React from "react"
 import styles from './styles/SearchCard.module.css'
 import { PatientFormData } from "../utils/dataTypes"
-import { NATIONALID } from '../utils/constants'
+import { NationalId } from '../utils/constants'
 import Link from "next/link";
 
 
 async function getPatientByIdType(
     url: string, 
-    idType: NATIONALID , 
+    idType: NationalId , 
     idValue: string
   ): Promise<any> {
   const fullURL = `${url}?idType=${idType}&idVal=${idValue}`
@@ -25,7 +25,7 @@ async function searchPatients(
     formData: FormData,
     setSearchResult: React.Dispatch<React.SetStateAction<PatientFormData[]>>
   ) {
-  const nidType = formData.get("idType")?.toString() as NATIONALID | undefined
+  const nidType = formData.get("idType")?.toString() as NationalId | undefined
   const nidValue = formData.get("patientId")?.toString() as PatientFormData["NationalIDType"] | undefined
 
   if (nidValue != undefined && nidType != undefined) {
@@ -44,8 +44,8 @@ export function IDSelector({ className }:{className?: string}) {
     <>
       <select className={className} defaultValue="" name="idType" required>
         <option value="" disabled>ID Type</option>
-        <option value={NATIONALID.AadharCard}>Aadhar Card</option>
-        <option value={NATIONALID.Passport}>Passport</option>
+        <option value={NationalId.AadharCard}>Aadhar Card</option>
+        <option value={NationalId.Passport}>Passport</option>
         <option value="hospital-patient-id">Patient ID</option>
       </select>
       <input type="search" name="patientId" placeholder="-- Please select ID type --" required />

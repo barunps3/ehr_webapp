@@ -1,16 +1,16 @@
 
-export enum NATIONALID {
+export enum NationalId {
   Passport = "Passport",
   AadharCard = "AadharCard"
 }
 
-export enum GENDER {
+export enum Gender {
   Male = "Male",
   Female = "Female",
   Other = "Other"
 }
 
-export enum HOSPITALDEPT {
+export enum HospitalDept {
   Orthopaedic = "Orthopaedic",
   GenPhysician = "GeneralPhysician",
   Cancer = "Cancer",
@@ -18,14 +18,20 @@ export enum HOSPITALDEPT {
   Gynecologist = "Gynecologist"
 }
 
-export enum CARETYPE {
+export enum CareType {
   InPatient = "INPATIENT",
   OutPatient = "OUTPATIENT"
 }
 
-export enum PAGENAME {
+export enum PageName {
   LoginPage = "LoginPage",
   SearchPage = "SearchPage",
   PatientHistory = "PatientHistory",
   UploadPage = "UploadPage"
+}
+
+export enum Report {
+  Xrays = "Xrays",
+  MriScans = "MriScans",
+  BloodTests = "BloodTests"
 }

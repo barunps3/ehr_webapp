@@ -1,11 +1,11 @@
 'use client'
 import React, { useState } from "react"
-import SearchResultCard from "../components/SearchResultCard"
-import SearchCard from "../components/SearchCard"
+import SearchCard from "../components/searchCard"
+import SearchResultCard from "../components/searchResultCard"
 import HeaderContent from "../components/HeaderContent"
 import './searchPage.css'
 import { PatientFormData } from "../utils/dataTypes"
-import { PAGENAME } from "../utils/constants"
+import { PageName } from "../utils/constants"
 
 
 export default function SearchPage() {
@@ -18,7 +18,7 @@ export default function SearchPage() {
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent pageName={PAGENAME.SearchPage}/>
+          <HeaderContent pageName={PageName.SearchPage}/>
         </div>
         <div className="company-header light-blue"></div>
       </header>

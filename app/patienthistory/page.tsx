@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderContent from "../components/HeaderContent";
 import PatientOverview from "../components/PatientOverview";
-import { PAGENAME } from "../utils/constants";
+import { PageName } from "../utils/constants";
 import { searchParams } from "../utils/dataTypes";
 import { getListOfReports, getPatientBasicInfo } from "../lib/fetches";
 import BasicInfoBar from "../components/BasicInfoBar";
@@ -16,7 +16,7 @@ export default async function PatientHistoryPage({ searchParams }:
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent pageName={PAGENAME.PatientHistory}/>
+          <HeaderContent pageName={PageName.PatientHistory}/>
         </div>
         <div className="company-header light-blue"></div>
       </header>

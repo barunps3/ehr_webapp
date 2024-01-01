@@ -3,7 +3,7 @@ import PatientEntryForm from "@/app/components/EnterPatient"
 import { searchParams } from "@/app/utils/dataTypes"
 import { getPatientBasicInfo } from "@/app/lib/fetches"
 import { DefaultPatientFormData } from "@/app/utils/defaults"
-import { CARETYPE, GENDER, HOSPITALDEPT } from "@/app/utils/constants"
+import { CareType, Gender, HospitalDept } from "@/app/utils/constants"
 
 export default async function EditPatientPage({ searchParams }: {
   searchParams : searchParams
@@ -13,7 +13,7 @@ export default async function EditPatientPage({ searchParams }: {
 
   patientFormData["FirstName"] = data["FirstName"]
   patientFormData["LastName"] = data["LastName"]
-  patientFormData["Gender"] = data["Gender"] as GENDER
+  patientFormData["Gender"] = data["Gender"] as Gender
   patientFormData["DateOfBirth"] = data["DateOfBirth"]
   patientFormData["InsuranceId"] = data["InsuranceId"]
   patientFormData["PhoneNum"] = data["PhoneNum"]
@@ -22,8 +22,8 @@ export default async function EditPatientPage({ searchParams }: {
   patientFormData["NationalIDType"] = searchParams.idType
   patientFormData["NationalIDValue"] = searchParams.idValue
   patientFormData["PatientUUID"] = data["UUID"]
-  patientFormData["InPatient"] = data["CurrentCare"] as CARETYPE
-  patientFormData["CurrentDept"] = data["CurrentDept"] as HOSPITALDEPT
+  patientFormData["InPatient"] = data["CurrentCare"] as CareType
+  patientFormData["CurrentDept"] = data["CurrentDept"] as HospitalDept
 
   return (
     <>

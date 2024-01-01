@@ -1,4 +1,4 @@
-import { GENDER, NATIONALID, HOSPITALDEPT, CARETYPE } from './constants'
+import { Gender, NationalId, HospitalDept, CareType } from './constants'
 import {v4 as uuidv4} from 'uuid';
 
 export const EmptyPatientBasicInfo = {
@@ -18,17 +18,17 @@ export const EmptyPatientBasicInfo = {
 export const DefaultPatientFormData = {
   FirstName: "",
   LastName: "",
-  Gender: GENDER.Male,
+  Gender: Gender.Male,
   DateOfBirth: "",
   InsuranceId: "",
   PhoneNum: "",
   EmergencyPhoneNum: "",
   Address: "",
-  NationalIDType: NATIONALID.AadharCard,
+  NationalIDType: NationalId.AadharCard,
   NationalIDValue: "",
   PatientUUID: uuidv4(),
-  InPatient: CARETYPE.OutPatient,
-  CurrentDept: HOSPITALDEPT.GenPhysician,
+  InPatient: CareType.OutPatient,
+  CurrentDept: HospitalDept.GenPhysician,
   Comments: ""
 }
 
