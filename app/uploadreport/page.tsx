@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderContent from "../components/HeaderContent";
-import { PAGENAME } from "../utils/constants";
+import { PageName } from "../utils/constants";
 import { getPatientBasicInfo, getListOfReports } from "../lib/fetches";
 import BasicInfoBar from "../components/BasicInfoBar";
 import { searchParams } from "../utils/dataTypes";
@@ -17,7 +17,7 @@ export default async function AddPatientPage({ searchParams }:
     <>
       <header className="header">
         <div className="company-header dark-blue">
-          <HeaderContent pageName={PAGENAME.UploadPage} />
+          <HeaderContent pageName={PageName.UploadPage} />
         </div>
         <div className="company-header light-blue"></div>
       </header>
