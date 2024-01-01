@@ -30,12 +30,13 @@ PascalCase for :
   - `type` Names
   - `enum` Values
   - `Default Variables` names, `Default Variable Keys`
-  - Components, Component file names
+  - `Component` names, `Component file name`
 
 camelCase for :
   - `function` names
   - function `parameters`
   - local `variables`
+  - `file names` which do not contain `Components`
 
 Use whole word when possible
 
@@ -67,8 +68,11 @@ function f(x: number, y: string): void { }
 ```
 
 ## Folder Structure
-- Components used directly in a pages must be placed in app/components
-- Components shared between Components (which were called in page.tsx) must be placed in app/utils/components
+- Components used directly in a pages must be placed in app/components. And would be referred as `Main Components`
+- Components shared by `Main Components` must be placed in app/utils/components
+- Component which are not shared and has highly corelated to `Main Component` is created in the same file.
+- All fetches are placed in app/lib folder
+- All images for testing/icons/svgs are placed in public folder
 
 # CSS Styling
 - Color palette used: https://colorhunt.co/palette/f5efe7d8c4b64f709c213555. Please check app/globals.css
