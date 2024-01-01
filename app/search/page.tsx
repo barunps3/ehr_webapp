@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react"
-import SearchResultCard from "../components/SearchResultCard"
-import SearchCard from "../components/SearchCard"
+import SearchCard from "../components/searchCard"
+import SearchResultCard from "../components/searchResultCard"
 import HeaderContent from "../components/HeaderContent"
 import './searchPage.css'
 import { PatientFormData } from "../utils/dataTypes"
