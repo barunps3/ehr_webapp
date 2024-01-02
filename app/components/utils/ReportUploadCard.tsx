@@ -90,11 +90,9 @@ export default function ReportUploadCard() {
   return (
     <div className={styles.reportUploadContainer}>
       <div className={styles.previewContainer}>
-        <Link href="localPdfs/bloodTestReport.pdf" target="_blank">
-          <button className={styles.openPdfTab} >Maximize</button>
-        </Link>
-        <PdfContainer defaultPdf="localPdfs/bloodTestReport.pdf" />      
-        {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
+        {/* {fileDataUrls.length && selectedReportType === 'bloodTest' ? <PdfContainer defaultPdfUrl="localPdfs/bloodTestReport.pdf" />: <></>} */}
+        {fileDataUrls.length && selectedReportType === 'bloodTest' ? <PdfContainer defaultPdfUrl={fileDataUrls[0]} />: <></>}
+        {fileDataUrls.length && selectedReportType === 'xRay'? <ImageGallery defaultImages={fileDataUrls} />: <></>}
       </div>
 
       <div className={styles.fileTypeSelector}>

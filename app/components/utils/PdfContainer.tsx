@@ -1,9 +1,16 @@
+import Link from "next/link"
+import styles from "../styles/PdfContainer.module.css"
 
-
-export default function PdfContainer({ defaultPdf }: {defaultPdf?: string}) {
+export default function PdfContainer({ defaultPdfUrl }: {defaultPdfUrl: string}) {
   
         //{/* <a href={defaultPdf}>You can maximize</a> */}
   return (
-    <object title="pdfViewer" data={defaultPdf} type="application/pdf" style={{'height': '100%', 'width': '100%'}}></object>
+    <div>
+      <object className={styles.pdfViewer} title="pdfViewer" data={defaultPdfUrl} type="application/pdf"></object>
+      <Link href={defaultPdfUrl} target="_blank">
+        <button className={styles.openPdfTab}>Maximize</button>
+      </Link>
+    </div>
+    
   )
 } 
