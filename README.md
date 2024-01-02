@@ -79,7 +79,7 @@ function f(x: number, y: string): void { }
 # CSS Styling
 - Color palette used: https://colorhunt.co/palette/f5efe7d8c4b64f709c213555. Please check app/globals.css
 - `border-radius` of components except buttons: 10px
-- `font` Family: Sans-serif
+- `font-family`: Sans-serif
 
 
 # Appendix
