@@ -20,7 +20,6 @@ export default function PatientOverview(
       <ExplorerSideBar reportFiles={reportsList} setShowXray={setShowXray} />
       <div className={styles.reportsViewCard}>
         { showXray ? <Report patientUUID={data["UUID"]} reportType="xrays" showReport={showXray} /> : <></> }
-        { showXray ? <Report patientUUID={data["UUID"]} reportType="xrays" showReport={showXray} /> : <></> }
       </div>
     </>
   )

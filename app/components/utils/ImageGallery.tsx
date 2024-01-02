@@ -1,7 +1,24 @@
 import Image from "next/image"
-import styles from '../styles/PatientReportViewCard.module.css'
-import ImageMaximizer from "./ImageMaximizer"
+import styles from '../styles/ImageGallery.module.css'
+import { MouseEventHandler } from 'react'
 import { useState, useRef, useEffect } from "react"
+
+
+type imageMaximizer = {
+  show: boolean
+  onClick: MouseEventHandler<HTMLButtonElement>
+  isMaximized: boolean
+}
+
+export function ImageMaximizer({ show, onClick, isMaximized}: imageMaximizer) {
+  return (
+    <button className={styles.imageMaximizer}
+      onClick={onClick}
+      style={show ? {display: 'block'} : {display: 'none'}}>
+      { isMaximized ? 'Minimize' : 'Maximize'} 
+    </button>
+  )
+}
 
 export default function ImageGallery({ defaultImages }: { defaultImages: string[]}) {
   const [ selectedImage, setMainImage ] = useState(defaultImages[0])

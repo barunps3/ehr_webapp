@@ -17,7 +17,6 @@ export default function ReportUploadOverview(
       <div className={styles.reportUploadViewCard}>
         <ReportUploadCard />
         { showXray ? <Report patientUUID={data["UUID"]} reportType="xrays" showReport={showXray} /> : <></> }
-        { showXray ? <Report patientUUID={data["UUID"]} reportType="xrays" showReport={showXray} /> : <></> }
       </div>
     </>
   )
