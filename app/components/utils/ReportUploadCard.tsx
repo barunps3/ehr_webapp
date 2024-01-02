@@ -1,7 +1,8 @@
-import Image from "next/image"
+import PdfContainer from "./PdfContainer"
 import { useEffect, useRef, useState } from "react"
 import styles from "../styles/ReportUploadOverview.module.css"
 import ImageGallery from "./ImageGallery"
+import Link from "next/link"
 
 const inputFileExt = {
   "xRay": ".jpg, .jpeg, .png",
@@ -89,6 +90,10 @@ export default function ReportUploadCard() {
   return (
     <div className={styles.reportUploadContainer}>
       <div className={styles.previewContainer}>
+        <Link className={styles.openPdfTab} href="localPdfs/bloodTestReport.pdf" target="_blank">
+          <button>Maximize</button>
+        </Link>
+        <PdfContainer defaultPdf="localPdfs/bloodTestReport.pdf" />      
         {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
       </div>
 
