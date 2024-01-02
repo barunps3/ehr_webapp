@@ -14,7 +14,7 @@
   height: 600px;
   display: grid;
   grid-template-columns: 65% auto;
-  grid-template-rows: 70% auto;
+  grid-template-rows: 75% auto;
 }
 
 .previewContainer {
@@ -82,5 +82,6 @@
   bottom: 0px;
   left: 0px;
   height: auto;
-  background-color: aliceblue;
+  width: auto;
+  /* background-color: var(--content-color-2); */
 }

@@ -90,8 +90,8 @@ export default function ReportUploadCard() {
   return (
     <div className={styles.reportUploadContainer}>
       <div className={styles.previewContainer}>
-        <Link className={styles.openPdfTab} href="localPdfs/bloodTestReport.pdf" target="_blank">
-          <button>Maximize</button>
+        <Link href="localPdfs/bloodTestReport.pdf" target="_blank">
+          <button className={styles.openPdfTab} >Maximize</button>
         </Link>
         <PdfContainer defaultPdf="localPdfs/bloodTestReport.pdf" />      
         {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
