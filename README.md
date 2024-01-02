@@ -25,7 +25,7 @@ After you setup [backend api](https://github.com/barunps3/patient_api) properly,
 
 # Coding Guidelines 
 ## Indentation
-We use tabs not spaces
+We use spaces not tabs
 
 ## Names
 PascalCase for :
