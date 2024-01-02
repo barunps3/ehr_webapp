@@ -1,6 +1,19 @@
 
-.pdfViewer {
-  height: '100%';
-  width: '100%'
+.pdfContainer {
+  position: relative;
+  height: 100%;
+  width: 100%
 }
 
+.pdfViewer {
+  height: 100%;
+  width: 100%;
+}
+
+.openPdfTab {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: auto;
+  width: auto;
+}

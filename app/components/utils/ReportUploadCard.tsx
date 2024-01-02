@@ -71,7 +71,7 @@ export default function ReportUploadCard() {
         break
       case "bloodTest":
         setSelectedReportType("bloodTest")
-        acceptedInputFileExt = inputFileExt["mriScan"]
+        acceptedInputFileExt = inputFileExt["bloodTest"]
         console.log("bloodTest was selected")
         break
       default:
