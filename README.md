@@ -8,6 +8,8 @@ This is a [Next.js](https://nextjs.org/) project
 First, run the development server:
 
 ```bash
+# Run in root folder
+$ npm install nextjs
 $ npm run dev
 ```
 
