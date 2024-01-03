@@ -1,7 +1,24 @@
 import Image from "next/image"
-import styles from '../styles/PatientReportViewCard.module.css'
-import ImageMaximizer from "./ImageMaximizer"
+import styles from '../styles/ImageGallery.module.css'
+import { MouseEventHandler } from 'react'
 import { useState, useRef, useEffect } from "react"
+
+
+type imageMaximizer = {
+  show: boolean
+  onClick: MouseEventHandler<HTMLButtonElement>
+  isMaximized: boolean
+}
+
+export function ImageMaximizer({ show, onClick, isMaximized}: imageMaximizer) {
+  return (
+    <button className={styles.imageMaximizer}
+      onClick={onClick}
+      style={show ? {display: 'block'} : {display: 'none'}}>
+      { isMaximized ? 'Minimize' : 'Maximize'} 
+    </button>
+  )
+}
 
 export default function ImageGallery({ defaultImages }: { defaultImages: string[]}) {
   const [ selectedImage, setMainImage ] = useState(defaultImages[0])
@@ -11,10 +28,7 @@ export default function ImageGallery({ defaultImages }: { defaultImages: string[
   const [ inFullscreenMode, setScreenMode ] = useState(false)
   console.log("infullscreen?", inFullscreenMode)
 
-  const mainImageStyle = false ? styles.mainImageFullscreen : styles.mainImage
-  const thumbBarStyle = false ? styles.thumbBarFullscreen : styles.thumbBar
-
-  function handleClick(selectedImageId: number) {
+  function handleSelectImg(selectedImageId: number) {
     setMainImage(defaultImages[selectedImageId])
   }
 
@@ -34,7 +48,7 @@ export default function ImageGallery({ defaultImages }: { defaultImages: string[
     setScreenMode(!inFullscreenMode)
   }
 
-  const handleFullscreenChange = () => {
+  function handleFullscreenChange() {
     setScreenMode(!!document.fullscreenElement);
   };
 
@@ -47,7 +61,7 @@ export default function ImageGallery({ defaultImages }: { defaultImages: string[
 
   return (
     <div className={styles.imageGallery} ref={imageGallery}>
-      <div className={mainImageStyle}
+      <div className={styles.mainImage}
         onMouseEnter={() => setShowImgMaximizer(true)}
         onMouseLeave={() => setShowImgMaximizer(false)}>
         <ImageMaximizer show={showImgMaximizer}
@@ -60,12 +74,12 @@ export default function ImageGallery({ defaultImages }: { defaultImages: string[
           className={styles.image}
         />
       </div>
-      <div className={thumbBarStyle}>
+      <div className={styles.thumbBar}>
         {defaultImages.map((image, index) => {
           return (
             <div key={index} className={styles.thumbBox}>
               <Image src={image}
-                onClick={() => handleClick(index)}
+                onClick={() => handleSelectImg(index)}
                 alt="lumbar-spine-left"
                 fill={true}
                 className={styles.image}

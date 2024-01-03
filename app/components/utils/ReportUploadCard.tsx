@@ -1,7 +1,8 @@
-import Image from "next/image"
+import PdfContainer from "./PdfContainer"
 import { useEffect, useRef, useState } from "react"
 import styles from "../styles/ReportUploadOverview.module.css"
 import ImageGallery from "./ImageGallery"
+import Link from "next/link"
 
 const inputFileExt = {
   "xRay": ".jpg, .jpeg, .png",
@@ -70,7 +71,7 @@ export default function ReportUploadCard() {
         break
       case "bloodTest":
         setSelectedReportType("bloodTest")
-        acceptedInputFileExt = inputFileExt["mriScan"]
+        acceptedInputFileExt = inputFileExt["bloodTest"]
         console.log("bloodTest was selected")
         break
       default:
@@ -89,7 +90,9 @@ export default function ReportUploadCard() {
   return (
     <div className={styles.reportUploadContainer}>
       <div className={styles.previewContainer}>
-        {fileDataUrls.length ? <ImageGallery defaultImages={fileDataUrls} />: <></>}
+        {/* {fileDataUrls.length && selectedReportType === 'bloodTest' ? <PdfContainer defaultPdfUrl="localPdfs/bloodTestReport.pdf" />: <></>} */}
+        {fileDataUrls.length && selectedReportType === 'bloodTest' ? <PdfContainer defaultPdfUrl={fileDataUrls[0]} />: <></>}
+        {fileDataUrls.length && selectedReportType === 'xRay'? <ImageGallery defaultImages={fileDataUrls} />: <></>}
       </div>
 
       <div className={styles.fileTypeSelector}>
